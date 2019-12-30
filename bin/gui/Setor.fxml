@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+
+<AnchorPane prefHeight="350.0" prefWidth="739.0" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="gui.ClasseController">
+   <children>
+      <ImageView fitHeight="150.0" fitWidth="200.0" layoutX="6.0" layoutY="7.0" pickOnBounds="true" preserveRatio="true" AnchorPane.leftAnchor="1.0" AnchorPane.topAnchor="1.0">
+         <image>
+            <Image url="@image/btz%20reduzida.png" />
+         </image>
+      </ImageView>
+      <Button fx:id="btn_novo" layoutX="226.0" layoutY="14.0" mnemonicParsing="false" text="Novo" />
+      <Button fx:id="btn_editar" layoutX="290.0" layoutY="14.0" mnemonicParsing="false" text="Editar" />
+      <Button fx:id="btn_excluir" layoutX="351.0" layoutY="14.0" mnemonicParsing="false" text="Excluir" />
+      <Button fx:id="btn_pesquisa" layoutX="422.0" layoutY="14.0" mnemonicParsing="false" text="Pesquisar" />
+      <TextField fx:id="txt_numeral" layoutX="14.0" layoutY="134.0" prefHeight="25.0" prefWidth="67.0" />
+      <Label layoutX="20.0" layoutY="110.0" text="Numeral" />
+      <TextField fx:id="txt_classe" layoutX="101.0" layoutY="134.0" prefHeight="25.0" prefWidth="390.0" />
+      <Label layoutX="107.0" layoutY="110.0" text="Setor" />
+      <Button fx:id="btn_salvar" layoutX="376.0" layoutY="195.0" mnemonicParsing="false" text="Salvar" />
+      <Button fx:id="btn_sair" layoutX="455.0" layoutY="195.0" mnemonicParsing="false" text="Sair" />
+   </children>
+</AnchorPane>

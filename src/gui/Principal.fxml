@@ -1,0 +1,59 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.Menu?>
+<?import javafx.scene.control.MenuBar?>
+<?import javafx.scene.control.MenuItem?>
+<?import javafx.scene.control.ScrollPane?>
+<?import javafx.scene.layout.AnchorPane?>
+
+<AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="768.0" prefWidth="1064.0" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="gui.PrincipalController">
+   <children>
+      <MenuBar AnchorPane.leftAnchor="1.0" AnchorPane.rightAnchor="1.0">
+         <menus>
+            <Menu mnemonicParsing="false" text="Administrativo">
+               <items>
+                  <MenuItem fx:id="menuItemPessoa" mnemonicParsing="false" onAction="#onmenuItemPessoa" text="Cadastro de Pessoa" />
+                  <MenuItem fx:id="menuItemColaborador" mnemonicParsing="false" onAction="#onmenuItemCadastroColaborador" text="Cadastro de Colaborador" />
+                  <MenuItem fx:id="menuItemcadastroCliente" mnemonicParsing="false" onAction="#onmenuItemcadastroCliente" text="Cadastro de Cliente" />
+                  <MenuItem fx:id="menuItemcadastroFornecedor" mnemonicParsing="false" onAction="#onmenuItemcadastroFornecedor" text="Cadastro de Fornecedor" />
+               </items>
+            </Menu>
+            <Menu mnemonicParsing="false" text="Comercial">
+               <items>
+                  <MenuItem fx:id="menuItemcadastroOrcamento" mnemonicParsing="false" onAction="#onmenuItemcadastroOrcamento" text="Orçamento" />
+                  <MenuItem fx:id="menuItemcadastroOrdemServico" mnemonicParsing="false" onAction="#onmenuItemcadastroOrdemServico" text="Ordem de Serviço" />
+               </items>
+            </Menu>
+            <Menu mnemonicParsing="false" text="Engenharia">
+               <items>
+                  <MenuItem fx:id="menuItemdesenhoEquipamento" mnemonicParsing="false" onAction="#onmenuItemdesenhoEquipamento" text="Desenhos Equipamentos" />
+                  <MenuItem fx:id="menuItemdocumentos" mnemonicParsing="false" onAction="#onmenuItemdocumentos" text="Documentos" />
+                  <MenuItem fx:id="menuItemremessa" mnemonicParsing="false" onAction="#onmenuItemremessa" text="Remessa" />
+               </items>
+            </Menu>
+            <Menu mnemonicParsing="false" text="Configuração">
+               <items>
+                  <MenuItem fx:id="menuItemgrupo" mnemonicParsing="false" onAction="#onmenuItemgrupo" text="Cadastro de Grupo" />
+                  <MenuItem fx:id="menuItemusuario" mnemonicParsing="false" onAction="#onmenuItemusuario" text="Cadastro de Usuário" />
+                  <MenuItem fx:id="menuItemsenhaUsuario" mnemonicParsing="false" onAction="#onmenuItemsenhaUsuario" text="Alterar Senha dos Colaboradores" />
+                  <MenuItem fx:id="menuItemsenha" mnemonicParsing="false" onAction="#onmenuItemusuario" text="Alterar própria senha" />
+               </items>
+            </Menu>
+            <Menu mnemonicParsing="false" text="Sair">
+               <items>
+                  <MenuItem fx:id="menuItemsair" mnemonicParsing="false" onAction="#onmenuItemsair" text="Sair" />
+               </items>
+            </Menu>
+         </menus>
+         <padding>
+            <Insets left="1.0" right="1.0" />
+         </padding>
+      </MenuBar>
+      <ScrollPane fx:id="scroll" fitToHeight="true" fitToWidth="true" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" nodeOrientation="LEFT_TO_RIGHT" AnchorPane.bottomAnchor="1.0" AnchorPane.leftAnchor="1.0" AnchorPane.rightAnchor="1.0" AnchorPane.topAnchor="25.0">
+         <content>
+            <AnchorPane minHeight="0.0" minWidth="0.0" />
+         </content>
+      </ScrollPane>
+   </children>
+</AnchorPane>

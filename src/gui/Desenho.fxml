@@ -1,0 +1,79 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.ComboBox?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.ScrollPane?>
+<?import javafx.scene.control.TableColumn?>
+<?import javafx.scene.control.TableView?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.text.Font?>
+
+<ScrollPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="gui.desenhoController">
+   <content>
+      <AnchorPane prefHeight="790.0" prefWidth="999.0">
+         <children>
+            <Label layoutX="216.0" layoutY="12.0" text="Código" />
+            <ImageView fitHeight="150.0" fitWidth="200.0" layoutX="7.0" layoutY="7.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@image/btz%20reduzida.png" />
+               </image>
+            </ImageView>
+            <Button fx:id="btn_novo" layoutX="315.0" layoutY="29.0" mnemonicParsing="false" text="Novo" />
+            <Button fx:id="btn_editar" layoutX="383.0" layoutY="29.0" mnemonicParsing="false" text="Editar" />
+            <Button fx:id="btn_pesquisar" layoutX="445.0" layoutY="29.0" mnemonicParsing="false" text="Pesquisa" />
+            <Label fx:id="lbl_usuario" layoutX="935.0" layoutY="12.0" text="Usuário" />
+            <Label fx:id="lbl_data" layoutX="951.0" layoutY="46.0" text="Data" />
+            <Label layoutX="21.0" layoutY="113.0" text="Setor" />
+            <Button fx:id="btn_pesquisaSetor" layoutX="445.0" layoutY="130.0" mnemonicParsing="false" text="Pesquisa" />
+            <Label layoutX="21.0" layoutY="164.0" text="Classe" />
+            <Button fx:id="btn_pesquisaClasse" layoutX="445.0" layoutY="181.0" mnemonicParsing="false" text="Pesquisa" />
+            <Label layoutX="21.0" layoutY="214.0" text="Equipamento" />
+            <Button fx:id="btn_pesquisaEquipamento" layoutX="445.0" layoutY="231.0" mnemonicParsing="false" text="Pesquisa" />
+            <Button fx:id="btn_selecionarArquivo" layoutX="18.0" layoutY="296.0" mnemonicParsing="false" text="Selecionar arquivo" />
+            <Label layoutX="143.0" layoutY="272.0" text="Desenho Antigo" />
+            <Label layoutX="21.0" layoutY="337.0" text="Numero" />
+            <Label layoutX="145.0" layoutY="337.0" text="Descrição" />
+            <Label layoutX="528.0" layoutY="337.0" text="Revisão" />
+            <Label layoutX="21.0" layoutY="399.0" text="Caminho do Arquivo" />
+            <Label layoutX="592.0" layoutY="107.0" text="Elaborador por:" />
+            <Label layoutX="592.0" layoutY="158.0" text="Aprovado por:" />
+            <ComboBox layoutX="594.0" layoutY="128.0" prefWidth="150.0" />
+            <ComboBox layoutX="594.0" layoutY="178.0" prefWidth="150.0" />
+            <Button fx:id="btn_salvar" layoutX="460.0" layoutY="723.0" mnemonicParsing="false" text="Salvar " />
+            <Button fx:id="btn_cancelar" layoutX="91.0" layoutY="463.0" mnemonicParsing="false" text="Cancelar" />
+            <Button fx:id="btn_abrirnoCad" layoutX="176.0" layoutY="463.0" mnemonicParsing="false" text="Abrir no AutoCad" />
+            <Button fx:id="btn_excluir" layoutX="460.0" layoutY="463.0" mnemonicParsing="false" text="Excluir" />
+            <Label layoutX="318.0" layoutY="467.0" prefHeight="31.0" prefWidth="84.0" text="Cliente">
+               <font>
+                  <Font name="Arial Bold" size="21.0" />
+               </font>
+            </Label>
+            <TableView layoutX="22.0" layoutY="505.0" prefHeight="200.0" prefWidth="722.0">
+               <columns>
+                  <TableColumn prefWidth="75.0" text="C1" />
+                  <TableColumn prefWidth="75.0" text="C2" />
+               </columns>
+            </TableView>
+            <Button fx:id="btn_adicionarEncomenda" layoutX="23.0" layoutY="722.0" mnemonicParsing="false" text="Adicionar encomenda" />
+            <Button fx:id="btn_excluirEncomenda" layoutX="227.0" layoutY="723.0" mnemonicParsing="false" text="Excluir encomenda" />
+            <Button fx:id="btn_sair" layoutX="707.0" layoutY="723.0" mnemonicParsing="false" onAction="#onbtn_sair" text="Sair" />
+            <TextField fx:id="txt_codigo" layoutX="211.0" layoutY="29.0" prefHeight="25.0" prefWidth="60.0" />
+            <TextField fx:id="txt_codSetor" layoutX="19.0" layoutY="130.0" prefHeight="25.0" prefWidth="60.0" />
+            <TextField fx:id="txt_codClasse" layoutX="19.0" layoutY="181.0" prefHeight="25.0" prefWidth="60.0" />
+            <TextField fx:id="txt_codEquipamento" layoutX="19.0" layoutY="231.0" prefHeight="25.0" prefWidth="60.0" />
+            <TextField fx:id="txt_namSetor" layoutX="77.0" layoutY="130.0" prefHeight="25.0" prefWidth="359.0" />
+            <TextField fx:id="txt_namClasse" layoutX="77.0" layoutY="181.0" prefHeight="25.0" prefWidth="359.0" />
+            <TextField fx:id="txt_namEquipamento" layoutX="79.0" layoutY="231.0" prefHeight="25.0" prefWidth="359.0" />
+            <TextField fx:id="txt_desenhoAntigo" layoutX="139.0" layoutY="296.0" prefHeight="25.0" prefWidth="370.0" />
+            <TextField fx:id="txt_numeroDesenho" layoutX="21.0" layoutY="354.0" prefHeight="25.0" prefWidth="119.0" />
+            <TextField fx:id="txt_descricaoDesenho" layoutX="145.0" layoutY="354.0" prefHeight="25.0" prefWidth="367.0" />
+            <TextField fx:id="txt_revisaoDesenho" layoutX="528.0" layoutY="354.0" prefHeight="25.0" prefWidth="49.0" />
+            <TextField fx:id="txt_caminhoDesenho" layoutX="18.0" layoutY="422.0" prefHeight="25.0" prefWidth="561.0" />
+         </children>
+      </AnchorPane>
+   </content>
+</ScrollPane>
