@@ -6,6 +6,7 @@ import java.util.Optional;
 import java.util.ResourceBundle;
 
 import gui.util.Alerts;
+import gui.util.Utils;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
@@ -22,6 +23,7 @@ import javafx.stage.Stage;
 
 public class ColaboradorController implements Initializable {
 	
+	private static Stage stage;
 
 	@FXML
 	private Button btnNovo;
@@ -169,31 +171,11 @@ public class ColaboradorController implements Initializable {
 		ColaboradorController.stage = stage;
 	}
 	
-	private static Stage stage;
-	public void conexao() {
-		ScrollPane root = null;
-		try {
-			root = FXMLLoader.load(getClass().getResource("../gui/Colaborador.fxml"));
-			Scene scene = new Scene(root, 1024,	768);
-			Stage stage1 = new Stage();
-			stage1.setTitle("Cadastro de Colaborador");
-			stage1.setScene(scene);
-			stage1.setMaximized(true);
-			stage1.show();
-			setStage(stage1);
-			
-		} catch (IOException e) {
-			e.printStackTrace();
-		}	
+	
 
-	}
 	private void fecharColaborador() {
-		Optional<ButtonType> result = Alerts.showConfirmation("Confirmação", "Deseja realmente sair?");
-
-		if (result.get() == ButtonType.OK) {
-			setStage(ColaboradorController.getStage());
-			ColaboradorController.getStage().close();
-		}
+		Utils utils = new Utils();
+		utils.fechar();
 	}
 	@FXML
 	public void onbtn_sair() {
@@ -341,13 +323,7 @@ public class ColaboradorController implements Initializable {
 		novo();
 	}
 	
-	
-	
-	
-	
-	
-	
-	
+
 	
 
 	@Override

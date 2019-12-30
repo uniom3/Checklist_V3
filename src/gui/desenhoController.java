@@ -88,31 +88,7 @@ public class desenhoController implements Initializable{
 	}
 	
 	private static Stage stage;
-	public void conexao() {
-		ScrollPane root = null;
-		try {
-			root = FXMLLoader.load(getClass().getResource("../gui/Desenho.fxml"));
-			Scene scene = new Scene(root, 1024,	768);
-			Stage stage1 = new Stage();
-			stage1.setTitle("Cadastro de Desenho");
-			stage1.setScene(scene);
-			stage1.setMaximized(true);
-			stage1.show();
-			setStage(stage1);
-			
-		} catch (IOException e) {
-			e.printStackTrace();
-		}	
 
-	}
-	private void fecharDesenho() {
-		Optional<ButtonType> result = Alerts.showConfirmation("Confirmação", "Deseja realmente sair?");
-
-		if (result.get() == ButtonType.OK) {
-			setStage(desenhoController.getStage());
-			desenhoController.getStage().close();
-		}
-	}
 	@FXML
 	public void onbtn_sair() {
 		Utils utils = new Utils();

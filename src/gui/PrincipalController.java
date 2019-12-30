@@ -5,6 +5,8 @@ import java.net.URL;
 import java.util.ResourceBundle;
 
 import gui.util.Utils;
+import javafx.application.Platform;
+import javafx.event.EventHandler;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
@@ -13,12 +15,19 @@ import javafx.scene.control.MenuItem;
 import javafx.scene.control.ScrollPane;
 import javafx.scene.layout.AnchorPane;
 import javafx.stage.Stage;
+import javafx.stage.WindowEvent;
 import model.services.PrincipalService;
 
 public class PrincipalController implements Initializable {
-
-	
 	private static Stage stage;
+	
+	public static Stage getStage() {
+		return stage;
+	}
+
+	public static void setStage(Stage stage) {
+		PrincipalController.stage = stage;
+	}
 
 	@FXML
 	private MenuItem menuItemPessoa;
@@ -109,8 +118,8 @@ public class PrincipalController implements Initializable {
 
 	@FXML
 	public void onmenuItemCadastroColaborador() {
-ColaboradorController colaborador = new ColaboradorController();
-colaborador.conexao();
+		Utils utils = new Utils();		
+		utils.conexaoScrollPane("gui/Colaborador.fxml");
 	}
 
 	@FXML
@@ -118,18 +127,31 @@ colaborador.conexao();
 
 	}
 
-	public static Stage getStage() {
-		return stage;
-	}
 
-	public static void setStage(Stage stage) {
-		PrincipalController.stage = stage;
-	}
 
 	@Override
 	public void initialize(URL url, ResourceBundle rb) {
-
+		
+	
 	}
+	
+	public void onmenuItemsair() {	
+		stage.setOnCloseRequest(new EventHandler<WindowEvent>() {
+
+	        @Override
+	        public void handle(WindowEvent event) {
+	            Platform.runLater(new Runnable() {
+
+	                @Override
+	                public void run() {
+	                	Utils utils = new Utils();
+	            		utils.fechar();
+
+	                }
+	            });
+	        }
+	    });
+			}
 	
 	public void conexao() {
 		AnchorPane root = null;
@@ -148,15 +170,14 @@ colaborador.conexao();
 		}	
 
 	}
-	@FXML
-	public void onmenuItemsair() {
-		Utils utils = new Utils();
-		utils.fechar();
-	}
+	
+	
+	
 
 	public void setPrincipalService(PrincipalService principalService) {
 		// TODO Auto-generated method stub
 
 	}
+	
 
 }

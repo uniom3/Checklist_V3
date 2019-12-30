@@ -14,7 +14,7 @@
       <Label layoutX="419.0" layoutY="424.0" text="Senha" />
       <TextField fx:id="txtUserName" layoutX="457.0" layoutY="373.0" prefHeight="25.0" prefWidth="195.0" />
       <PasswordField fx:id="psfUserPassword" layoutX="457.0" layoutY="420.0" prefHeight="25.0" prefWidth="195.0" />
-      <Button fx:id="btnsave" layoutX="457.0" layoutY="473.0" mnemonicParsing="false" onAction="#onBtnSaveAction" onKeyPressed="#onCliqueEnter" text="Entrar" />
+      <Button fx:id="btnsave" layoutX="457.0" layoutY="473.0" mnemonicParsing="false" onAction="#onBtnSaveAction" text="Entrar" />
       <Button fx:id="btnclose" layoutX="616.0" layoutY="473.0" mnemonicParsing="false" onAction="#onBtnClose" text="Sair" />
       <ImageView fitHeight="150.0" fitWidth="200.0" layoutX="413.0" layoutY="270.0" pickOnBounds="true" preserveRatio="true" AnchorPane.leftAnchor="413.0" AnchorPane.topAnchor="270.0">
          <image>

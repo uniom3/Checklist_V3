@@ -4,21 +4,24 @@ import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
-import java.sql.Statement;
+import java.util.List;
 
-import model.entities.Login;
+import db.DB;
+import db.DbException;
+import model.dao.MainViewDao;
+//import model.entities.Login;
+import model.entities.MainView;
 
 
 
-public class MainViewDaoJDBC {
+public class MainViewDaoJDBC implements MainViewDao {
 	
 	
 	private Connection conn;
 	private String usuario1;
 	private String senha1;
-	Login obj;
-	PreparedStatement st = null;
-	ResultSet rs = null;
+	MainView obj;
+	
 	
 	public MainViewDaoJDBC(Connection conn) {
 		this.conn = conn;
@@ -40,43 +43,99 @@ public class MainViewDaoJDBC {
 		this.senha1 = senha;
 	}
 
-	public Login getObj() {
+	public MainView getObj() {
 		return obj;
 	}
 
-	public void setObj(Login obj) {
+	public void setObj(MainView obj) {
 		this.obj = obj;
 	}
 
 
 
-	private Login instantiateLogin(ResultSet rs) {
-		Login obj = new Login();
+	private MainView instantiateLogin(ResultSet rs) {
+		MainView obj = new MainView();
 		try {
 			obj.setUsuario(rs.getString("login"));
 			obj.setSenha(rs.getString("senha"));
+		
 		} catch (SQLException e) {
 			e.getMessage();
 		}
-
 		return obj;
+		
+	
+		
 	}
 	
 	
 
-	public void verificar(String usuario, String senha) {
-			try {
-			st = conn.prepareStatement("select * from tb_usuario where login = '?' and senha = '?'");
+	public Object verificar(String usuario, String senha) {
+			
+			return null;
+
+	}
+
+	@Override
+	public void insert(MainView obj) {
+		// TODO Auto-generated method stub
+		
+	}
+
+	@Override
+	public void update(MainView obj) {
+		// TODO Auto-generated method stub
+		
+	}
+
+	@Override
+	public void deleteById(Integer id) {
+		// TODO Auto-generated method stub
+		
+	}
+
+	@Override
+	public MainView findById(Integer id) {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	@Override
+	public List<MainView> findAll() {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	@Override
+	public MainView findByUser(String usuario, String senha) {
+		PreparedStatement st = null;
+		ResultSet rs = null;
+		
+		try {	
+			st =  conn.prepareStatement("select * from tb_usuario where login = '?' and senha = '?'");
 			st.setString(1, usuario);
 			st.setString(2, senha);
 			System.out.println(st);
 			rs = st.executeQuery();
 			rs.next();
-			obj = instantiateLogin(rs);
+			obj = instantiateMainView(rs);
+			return null;
 		} catch (SQLException e) {
-			e.printStackTrace();
+			throw new DbException(e.getMessage());
 		}
-
+		
+		finally {
+			DB.closeStatement(st);
+			DB.closeResultSet(rs);
+		}
+	}
+	
+	private MainView instantiateMainView(ResultSet rs) throws SQLException {
+		MainView obj = new MainView();
+		obj.setId(rs.getInt("Id"));
+		obj.setUsuario(rs.getString("usuario"));
+		obj.setSenha(rs.getString("senha"));
+		return obj;
 	}
 
 }

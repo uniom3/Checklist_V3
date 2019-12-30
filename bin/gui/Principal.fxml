@@ -40,11 +40,6 @@
                   <MenuItem fx:id="menuItemsenha" mnemonicParsing="false" onAction="#onmenuItemusuario" text="Alterar própria senha" />
                </items>
             </Menu>
-            <Menu mnemonicParsing="false" text="Sair">
-               <items>
-                  <MenuItem fx:id="menuItemsair" mnemonicParsing="false" onAction="#onmenuItemsair" text="Sair" />
-               </items>
-            </Menu>
          </menus>
          <padding>
             <Insets left="1.0" right="1.0" />
