@@ -113,9 +113,11 @@ public class MainViewController implements Initializable {
 	@SuppressWarnings("null")
 	private void verificacao() throws IOException { 		
 	MainViewDaoJDBC mainDAO = new MainViewDaoJDBC(conn);
-		mainDAO.findByUser(txtUserName.getText().toString(), psfUserPassword.getText().toString());			
-				if(getTxtUserName().getText().equals(mainDAO.getObj().getUsuario()) && getPsfUserPassword().getText().equals(mainDAO.getObj().getSenha())) {		
-		if(getTxtUserName().getText().equals("root") && getPsfUserPassword().getText().equals("1234")) {
+		mainDAO.findByUser(txtUserName.getText().toString(), psfUserPassword.getText().toString());
+		System.out.println(mainDAO.getUsuario() + mainDAO.getSenha() );
+		if(getTxtUserName().getText().equals(mainDAO.getUsuario()) && getPsfUserPassword().getText().equals(mainDAO.getSenha())) {	
+		
+	//	if(getTxtUserName().getText().equals("root") && getPsfUserPassword().getText().equals("1234")) {
 					PrincipalController principal = new PrincipalController();
 				//principal.conexao();	
 					Utils utils = new Utils();		
@@ -128,21 +130,5 @@ public class MainViewController implements Initializable {
 				}
 			
 			}
-	/*public void conexao(String caminho) {
-		AnchorPane root = null;
-		try {
-			root = FXMLLoader.load(getClass().getResource(caminho));
-		} catch (IOException e) {
-			e.printStackTrace();
-		}
-		Stage stage1 = new Stage();
-		Scene scene = new Scene(root, 400, 240);
-		stage1.setTitle("Checklist");
-		stage1.setScene(scene);
-		stage1.setMaximized(true);
-		stage1.show();
-		setStage(stage1);
-		fechar();
-		}*/
 }
-}
+//}

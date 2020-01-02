@@ -3,7 +3,7 @@ package gui;
 import java.io.IOException;
 import java.net.URL;
 import java.util.ResourceBundle;
-
+import gui.util.LblUsuario;
 import gui.util.Utils;
 import javafx.application.Platform;
 import javafx.event.EventHandler;
@@ -11,6 +11,7 @@ import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
 import javafx.scene.Scene;
+import javafx.scene.control.Label;
 import javafx.scene.control.MenuItem;
 import javafx.scene.control.ScrollPane;
 import javafx.scene.layout.AnchorPane;
@@ -20,7 +21,7 @@ import model.services.PrincipalService;
 
 public class PrincipalController implements Initializable {
 	private static Stage stage;
-	
+
 	public static Stage getStage() {
 		return stage;
 	}
@@ -59,10 +60,20 @@ public class PrincipalController implements Initializable {
 	private MenuItem menuItemsair;
 	@FXML
 	private ScrollPane scroll;
+	@FXML
+	private Label lblUsuario;	
+
+	
+	public void onLabelUsuario() {
+		LblUsuario dao = new LblUsuario();
+		String login = dao.getUsuario();
+		lblUsuario.setText(login);	
+		System.out.println(login+"foi");
+	}
 
 	@FXML
 	public void onmenuItemdesenhoEquipamento() {
-		Utils utils = new Utils();		
+		Utils utils = new Utils();
 		utils.conexaoScrollPane("gui/Desenho.fxml");
 	}
 
@@ -118,7 +129,7 @@ public class PrincipalController implements Initializable {
 
 	@FXML
 	public void onmenuItemCadastroColaborador() {
-		Utils utils = new Utils();		
+		Utils utils = new Utils();
 		utils.conexaoScrollPane("gui/Colaborador.fxml");
 	}
 
@@ -127,57 +138,51 @@ public class PrincipalController implements Initializable {
 
 	}
 
-
-
 	@Override
 	public void initialize(URL url, ResourceBundle rb) {
-		
-	
+		onLabelUsuario();
+
 	}
-	
-	public void onmenuItemsair() {	
+
+	public void onmenuItemsair() {
 		stage.setOnCloseRequest(new EventHandler<WindowEvent>() {
 
-	        @Override
-	        public void handle(WindowEvent event) {
-	            Platform.runLater(new Runnable() {
+			@Override
+			public void handle(WindowEvent event) {
+				Platform.runLater(new Runnable() {
 
-	                @Override
-	                public void run() {
-	                	Utils utils = new Utils();
-	            		utils.fechar();
+					@Override
+					public void run() {
+						Utils utils = new Utils();
+						utils.fechar();
 
-	                }
-	            });
-	        }
-	    });
+					}
+				});
 			}
-	
+		});
+	}
+
 	public void conexao() {
 		AnchorPane root = null;
 		try {
 			root = FXMLLoader.load(getClass().getResource("../gui/Principal.fxml"));
-			Scene scene = new Scene(root, 1024,	768);
+			Scene scene = new Scene(root, 1024, 768);
 			Stage stage1 = new Stage();
 			stage1.setTitle("Checklist");
 			stage1.setScene(scene);
 			stage1.setMaximized(true);
 			stage1.show();
 			setStage(stage1);
-			
+
 		} catch (IOException e) {
 			e.printStackTrace();
-		}	
+		}
 
 	}
-	
-	
-	
 
 	public void setPrincipalService(PrincipalService principalService) {
 		// TODO Auto-generated method stub
 
 	}
-	
 
 }

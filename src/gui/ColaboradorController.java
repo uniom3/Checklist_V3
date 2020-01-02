@@ -1,29 +1,40 @@
 package gui;
 
-import java.io.IOException;
 import java.net.URL;
-import java.util.Optional;
+import java.time.Instant;
+import java.time.ZoneId;
+import java.util.ArrayList;
+import java.util.Date;
+import java.util.List;
+import java.util.Map;
 import java.util.ResourceBundle;
+import java.util.Set;
 
+import db.DbException;
+import gui.listener.DataChangeListener;
 import gui.util.Alerts;
+import gui.util.LblUsuario;
 import gui.util.Utils;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
-import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
-import javafx.scene.Scene;
+import javafx.scene.control.Alert.AlertType;
 import javafx.scene.control.Button;
-import javafx.scene.control.ButtonType;
-import javafx.scene.control.ComboBox;
 import javafx.scene.control.Label;
-import javafx.scene.control.ScrollPane;
+import javafx.scene.control.RadioButton;
 import javafx.scene.control.TextField;
 import javafx.scene.layout.AnchorPane;
 import javafx.stage.Stage;
+import model.entities.Colaborador;
+import model.exceptions.ValidationException;
+import model.services.ColaboradorService;
 
 public class ColaboradorController implements Initializable {
 	
 	private static Stage stage;
+	private Colaborador entity;
+	ColaboradorService service = new ColaboradorService();	
+	private List<DataChangeListener> dataChangeListeners = new ArrayList<>();
 
 	@FXML
 	private Button btnNovo;
@@ -40,7 +51,7 @@ public class ColaboradorController implements Initializable {
 	@FXML
 	private Label lblData;
 	@FXML
-	private TextField txtCodigo;
+	private TextField txtId;
 	@FXML
 	private TextField txtNome;
 	@FXML
@@ -53,7 +64,10 @@ public class ColaboradorController implements Initializable {
 	private TextField txtNacionalidade;
 	@FXML
 	private TextField txtNaturalidade;
-
+	@FXML
+	private RadioButton rdAtivo;
+	@FXML
+	private RadioButton rdUsuarioDoSistema;
 	@FXML
 	private TextField txtDataNascimento;
 
@@ -171,7 +185,12 @@ public class ColaboradorController implements Initializable {
 		ColaboradorController.stage = stage;
 	}
 	
-	
+	public void onLabelUsuario() {
+		LblUsuario dao = new LblUsuario();
+		String login = dao.getUsuario();
+		lblUsuario.setText(login);	
+		System.out.println(login+"foi");
+	}
 
 	private void fecharColaborador() {
 		Utils utils = new Utils();
@@ -182,9 +201,30 @@ public class ColaboradorController implements Initializable {
 		fecharColaborador();
 	}
 	
+	@FXML
+	public void onradioAtivo() {
+		if(rdAtivo.isSelected() == true) {
+			rdAtivo.setSelected(true);
+		}else {
+			rdAtivo.setSelected(false);
+		}
+	}
+	@FXML
+	public void onradioUsuarioDoSistema() {
+		if(rdUsuarioDoSistema.isSelected() == true) {
+			rdUsuarioDoSistema.setSelected(true);
+		}else {
+			rdUsuarioDoSistema.setSelected(false);
+		}
+	}
+	
 	private void tela() {
 		PrincipalController principal = new PrincipalController();
 		
+	}
+	
+	public void setColaborador(Colaborador entity) {
+		this.entity = entity;
 	}
 
 	private void camposInativos() {
@@ -193,7 +233,7 @@ public class ColaboradorController implements Initializable {
 		btnRelatorio.setDisable(true);
 		lblUsuario.setDisable(true);
 		lblData.setDisable(true);
-		txtCodigo.setDisable(true);
+		txtId.setDisable(true);
 		txtNome.setDisable(true);
 		btnadicionarImagem.setDisable(true);
 		txtCpf.setDisable(true);
@@ -259,7 +299,7 @@ public class ColaboradorController implements Initializable {
 		btnRelatorio.setDisable(false);
 		lblUsuario.setDisable(false);
 		lblData.setDisable(false);
-		txtCodigo.setDisable(false);
+		txtId.setDisable(false);
 		txtNome.setDisable(false);
 		btnadicionarImagem.setDisable(false);
 		txtCpf.setDisable(false);
@@ -319,7 +359,24 @@ public class ColaboradorController implements Initializable {
 
 	}
 
-	public void onBtnNovo(ActionEvent e) {
+	public void onbtnSalvar(ActionEvent event) {
+		if (entity == null) {
+			throw new IllegalStateException("Entity was null");
+		}
+
+		try {
+			//entity = getFormData();
+			service.saveOrUpdate(entity);
+			//notifyDataChangeListeners();
+			Utils.currentStage(event).close();
+		} catch (ValidationException e) {
+			
+		} catch (DbException e) {
+			Alerts.showAlert("Error saving object", null, e.getMessage(), AlertType.ERROR);
+		}
+	}
+		
+public void onBtnNovo(ActionEvent e) {
 		novo();
 	}
 	
@@ -327,8 +384,9 @@ public class ColaboradorController implements Initializable {
 	
 
 	@Override
-	public void initialize(URL arg0, ResourceBundle arg1) {
+	public void initialize(URL url, ResourceBundle rb) {		
 		camposInativos();
+		onLabelUsuario();
 	}
 
 }

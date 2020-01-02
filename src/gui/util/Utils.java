@@ -5,6 +5,7 @@ import java.text.SimpleDateFormat;
 import java.time.LocalDate;
 import java.time.format.DateTimeFormatter;
 import java.util.Date;
+import java.util.List;
 import java.util.Locale;
 import java.util.Optional;
 
@@ -22,10 +23,16 @@ import javafx.scene.control.TableColumn;
 import javafx.scene.layout.AnchorPane;
 import javafx.stage.Stage;
 import javafx.util.StringConverter;
+import model.dao.MainViewDao;
+import model.dao.impl.MainViewDaoJDBC;
+import model.entities.MainView;
 
 public class Utils {
 	
 	private static Stage stage;
+	
+	
+	
 
 	public static Stage currentStage(ActionEvent event) {
 		return (Stage) ((Node) event.getSource()).getScene().getWindow();
@@ -126,7 +133,6 @@ public class Utils {
 		} catch (IOException e) {
 			e.printStackTrace();
 		}
-		//Stage stage1 = new Stage();
 		Scene scene = new Scene(root, 400, 240);
 		Stage stage1 = new Stage();	
 		stage1.setTitle("Checklist");
@@ -134,8 +140,7 @@ public class Utils {
 		stage1.setMaximized(true);
 		stage1.show();
 		setStage(stage1);
-		//stage1.close();
-	//	fechar();
+	
 		}
 	
 	public void fechar() {
@@ -154,7 +159,6 @@ public void conexaoScrollPane(String caminho) {
 		} catch (IOException e) {
 			e.printStackTrace();
 		}
-		//Stage stage1 = new Stage();
 		Scene scene = new Scene(root, 400, 240);
 		Stage stage1 = new Stage();	
 		stage1.setTitle("Checklist");
@@ -162,9 +166,10 @@ public void conexaoScrollPane(String caminho) {
 		stage1.setMaximized(true);
 		stage1.show();
 		setStage(stage1);
-		//stage1.close();
-	//	fechar();
 	}
 	
 
 }
+
+
+

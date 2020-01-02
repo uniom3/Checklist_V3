@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
 <?import javafx.geometry.Insets?>
+<?import javafx.scene.control.Label?>
 <?import javafx.scene.control.Menu?>
 <?import javafx.scene.control.MenuBar?>
 <?import javafx.scene.control.MenuItem?>
@@ -47,7 +48,10 @@
       </MenuBar>
       <ScrollPane fx:id="scroll" fitToHeight="true" fitToWidth="true" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" nodeOrientation="LEFT_TO_RIGHT" AnchorPane.bottomAnchor="1.0" AnchorPane.leftAnchor="1.0" AnchorPane.rightAnchor="1.0" AnchorPane.topAnchor="25.0">
          <content>
-            <AnchorPane minHeight="0.0" minWidth="0.0" />
+            <AnchorPane minHeight="0.0" minWidth="0.0">
+               <children>
+                  <Label fx:id="lblUsuario" layoutX="1018.0" layoutY="6.0" AnchorPane.rightAnchor="2.0" />
+               </children></AnchorPane>
          </content>
       </ScrollPane>
    </children>

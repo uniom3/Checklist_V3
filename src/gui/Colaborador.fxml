@@ -3,6 +3,7 @@
 <?import javafx.scene.control.Button?>
 <?import javafx.scene.control.ComboBox?>
 <?import javafx.scene.control.Label?>
+<?import javafx.scene.control.RadioButton?>
 <?import javafx.scene.control.ScrollPane?>
 <?import javafx.scene.control.Tab?>
 <?import javafx.scene.control.TabPane?>
@@ -10,6 +11,7 @@
 <?import javafx.scene.image.Image?>
 <?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.Pane?>
 
 <ScrollPane maxHeight="-Infinity" maxWidth="-Infinity" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="gui.ColaboradorController">
    <content>
@@ -26,11 +28,7 @@
             <Label layoutX="166.0" layoutY="98.0" prefHeight="25.0" prefWidth="58.0" text="Código" />
             <TextField fx:id="txtCodigo" editable="false" layoutX="165.0" layoutY="131.0" maxHeight="25.0" maxWidth="60.0" prefHeight="25.0" prefWidth="60.0" />
             <Label layoutX="252.0" layoutY="98.0" prefHeight="25.0" prefWidth="105.0" text="Nome " />
-            <Label layoutX="165.0" layoutY="167.0" prefHeight="25.0" prefWidth="50.0" text="Ativo" />
             <TextField fx:id="txtNome" layoutX="252.0" layoutY="131.0" maxHeight="25.0" maxWidth="722.0" prefHeight="25.0" prefWidth="665.0" />
-            <ComboBox fx:id="comboBoxAtivo" layoutX="166.0" layoutY="200.0" prefHeight="25.0" prefWidth="75.0" />
-            <Label layoutX="252.0" layoutY="171.0" prefHeight="25.0" prefWidth="256.0" text="Usuário do Sistema" />
-            <ComboBox fx:id="comboBoxUsuarioSistema" layoutX="249.0" layoutY="200.0" prefHeight="25.0" prefWidth="112.0" />
             <TabPane layoutX="6.0" layoutY="299.0" prefHeight="358.0" prefWidth="929.0" tabClosingPolicy="UNAVAILABLE" AnchorPane.bottomAnchor="112.0" AnchorPane.leftAnchor="1.0" AnchorPane.rightAnchor="128.0" AnchorPane.topAnchor="299.0">
                <tabs>
                   <Tab text="Dados Pessoais">
@@ -174,7 +172,7 @@
                </tabs>
             </TabPane>
             <Button fx:id="btnDocumentos" layoutX="14.0" layoutY="667.0" mnemonicParsing="false" text="Documentos" />
-            <Button fx:id="btnSalvar" layoutX="798.0" layoutY="667.0" mnemonicParsing="false" text="Salvar" />
+            <Button fx:id="btnSalvar" layoutX="798.0" layoutY="667.0" mnemonicParsing="false" onAction="#onbtnSalvar" text="Salvar" />
             <Button fx:id="btnSair" layoutX="899.0" layoutY="667.0" mnemonicParsing="false" onAction="#onbtn_sair" text="Sair" AnchorPane.rightAnchor="123.0" />
             <ImageView fitHeight="150.0" fitWidth="200.0" layoutX="-14.0" layoutY="4.0" pickOnBounds="true" preserveRatio="true">
                <image>
@@ -182,8 +180,11 @@
                </image>
             </ImageView>
             <ImageView fitHeight="183.0" fitWidth="141.0" layoutX="9.0" layoutY="80.0" pickOnBounds="true" preserveRatio="true" />
-            <Label layoutX="1000.0" layoutY="18.0" text="Usuário" />
-            <Label layoutX="1013.0" layoutY="43.0" text="Data" />
+            <Label layoutX="1000.0" layoutY="18.0" prefHeight="17.0" prefWidth="35.0" AnchorPane.rightAnchor="2.0" />
+            <Label layoutX="1013.0" layoutY="43.0" />
+            <RadioButton fx:id="rdAtivo" layoutX="166.0" layoutY="184.0" mnemonicParsing="false" onAction="#onradioAtivo" onKeyPressed="#onradioAtivo" text="Ativo" />
+            <RadioButton fx:id="rdUsuarioDoSistema" layoutX="305.0" layoutY="184.0" mnemonicParsing="false" onAction="#onradioUsuarioDoSistema" onMouseClicked="#onradioUsuarioDoSistema" text="Usuário do Sistema" />
+            <Pane layoutX="474.0" layoutY="180.0" prefHeight="104.0" prefWidth="189.0" />
          </children>
       </AnchorPane>
    </content>

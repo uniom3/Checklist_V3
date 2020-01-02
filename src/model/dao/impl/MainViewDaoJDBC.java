@@ -5,16 +5,16 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.List;
-
 import db.DB;
 import db.DbException;
+import gui.util.LblUsuario;
 import model.dao.MainViewDao;
-//import model.entities.Login;
 import model.entities.MainView;
 
 public class MainViewDaoJDBC implements MainViewDao {
 
 	private Connection conn;
+
 	private String usuario1;
 	private String senha1;
 	MainView obj;
@@ -50,8 +50,10 @@ public class MainViewDaoJDBC implements MainViewDao {
 	private MainView instantiateLogin(ResultSet rs) {
 		MainView obj = new MainView();
 		try {
-			obj.setUsuario(rs.getString("login"));
-			obj.setSenha(rs.getString("senha"));
+			setUsuario(rs.getString("login"));
+			System.out.println(rs.getString("login"));
+			setSenha(rs.getString("senha"));
+			System.out.println(rs.getString("senha"));
 
 		} catch (SQLException e) {
 			e.getMessage();
@@ -88,10 +90,9 @@ public class MainViewDaoJDBC implements MainViewDao {
 	public MainView findById(Integer id) {
 		PreparedStatement st = null;
 		ResultSet rs = null;
+
 		try {
-			st = conn.prepareStatement(
-					"SELECT * from TB_USUARIO"
-					+ "WHERE Id = ?");			
+			st = conn.prepareStatement("SELECT * from TB_USUARIO" + "WHERE Id = ?");
 			st.setInt(1, id);
 			rs = st.executeQuery();
 			if (rs.next()) {
@@ -99,11 +100,9 @@ public class MainViewDaoJDBC implements MainViewDao {
 				return obj;
 			}
 			return null;
-		}
-		catch (SQLException e) {
+		} catch (SQLException e) {
 			throw new DbException(e.getMessage());
-		}
-		finally {
+		} finally {
 			DB.closeStatement(st);
 			DB.closeResultSet(rs);
 		}
@@ -119,31 +118,36 @@ public class MainViewDaoJDBC implements MainViewDao {
 	public MainView findByUser(String usuario, String senha) {
 		PreparedStatement st = null;
 		ResultSet rs = null;
-
+		conn = DB.getConnection();
+		
 		try {
-			st = (com.mysql.jdbc.PreparedStatement) conn
-					.prepareStatement("select * from tb_usuario where login = '?' and senha = '?'");
-			st.setString(1, usuario);
-			st.setString(2, senha);
-			System.out.println(st);
+			st = conn.prepareStatement(
+					"select * from tb_usuario where login = '"+usuario+"' and senha = '"+senha+"'");
+		
 			rs = st.executeQuery();
-			rs.next();
-			obj = instantiateMainView(rs);
-			return null;
+			if (rs.next()) {
+				setUsuario(rs.getString("login"));
+				setSenha(rs.getString("senha"));
+				LblUsuario usu = new LblUsuario(usuario);
+				
+				System.out.println(usu.getUsuario());				
+			}
 		} catch (SQLException e) {
-			throw new DbException(e.getMessage());
+			// TODO Auto-generated catch block
+			e.printStackTrace();
 		}
-
+		
 		finally {
 			DB.closeStatement(st);
 			DB.closeResultSet(rs);
 		}
+		return obj;
 	}
-
+	
 	private MainView instantiateMainView(ResultSet rs) throws SQLException {
 		MainView obj = new MainView();
 		obj.setId(rs.getInt("Id"));
-		obj.setUsuario(rs.getString("usuario"));
+		obj.setUsuario(rs.getString("login"));
 		obj.setSenha(rs.getString("senha"));
 		return obj;
 	}
