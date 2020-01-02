@@ -12,21 +12,17 @@ import model.dao.MainViewDao;
 //import model.entities.Login;
 import model.entities.MainView;
 
-
-
 public class MainViewDaoJDBC implements MainViewDao {
-	
-	
+
 	private Connection conn;
 	private String usuario1;
 	private String senha1;
 	MainView obj;
-	
-	
+
 	public MainViewDaoJDBC(Connection conn) {
 		this.conn = conn;
 	}
-	
+
 	public String getUsuario() {
 		return usuario1;
 	}
@@ -51,53 +47,66 @@ public class MainViewDaoJDBC implements MainViewDao {
 		this.obj = obj;
 	}
 
-
-
 	private MainView instantiateLogin(ResultSet rs) {
 		MainView obj = new MainView();
 		try {
 			obj.setUsuario(rs.getString("login"));
 			obj.setSenha(rs.getString("senha"));
-		
+
 		} catch (SQLException e) {
 			e.getMessage();
 		}
 		return obj;
-		
-	
-		
+
 	}
-	
-	
 
 	public Object verificar(String usuario, String senha) {
-			
-			return null;
+
+		return null;
 
 	}
 
 	@Override
 	public void insert(MainView obj) {
 		// TODO Auto-generated method stub
-		
+
 	}
 
 	@Override
 	public void update(MainView obj) {
 		// TODO Auto-generated method stub
-		
+
 	}
 
 	@Override
 	public void deleteById(Integer id) {
 		// TODO Auto-generated method stub
-		
+
 	}
 
 	@Override
 	public MainView findById(Integer id) {
-		// TODO Auto-generated method stub
-		return null;
+		PreparedStatement st = null;
+		ResultSet rs = null;
+		try {
+			st = conn.prepareStatement(
+					"SELECT * from TB_USUARIO"
+					+ "WHERE Id = ?");			
+			st.setInt(1, id);
+			rs = st.executeQuery();
+			if (rs.next()) {
+				MainView obj = instantiateMainView(rs);
+				return obj;
+			}
+			return null;
+		}
+		catch (SQLException e) {
+			throw new DbException(e.getMessage());
+		}
+		finally {
+			DB.closeStatement(st);
+			DB.closeResultSet(rs);
+		}
 	}
 
 	@Override
@@ -110,9 +119,10 @@ public class MainViewDaoJDBC implements MainViewDao {
 	public MainView findByUser(String usuario, String senha) {
 		PreparedStatement st = null;
 		ResultSet rs = null;
-		
-		try {	
-			st =  conn.prepareStatement("select * from tb_usuario where login = '?' and senha = '?'");
+
+		try {
+			st = (com.mysql.jdbc.PreparedStatement) conn
+					.prepareStatement("select * from tb_usuario where login = '?' and senha = '?'");
 			st.setString(1, usuario);
 			st.setString(2, senha);
 			System.out.println(st);
@@ -123,13 +133,13 @@ public class MainViewDaoJDBC implements MainViewDao {
 		} catch (SQLException e) {
 			throw new DbException(e.getMessage());
 		}
-		
+
 		finally {
 			DB.closeStatement(st);
 			DB.closeResultSet(rs);
 		}
 	}
-	
+
 	private MainView instantiateMainView(ResultSet rs) throws SQLException {
 		MainView obj = new MainView();
 		obj.setId(rs.getInt("Id"));

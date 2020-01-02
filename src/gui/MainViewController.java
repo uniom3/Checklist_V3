@@ -112,7 +112,7 @@ public class MainViewController implements Initializable {
 	
 	@SuppressWarnings("null")
 	private void verificacao() throws IOException { 		
-		MainViewDaoJDBC mainDAO = new MainViewDaoJDBC(conn);
+	MainViewDaoJDBC mainDAO = new MainViewDaoJDBC(conn);
 		mainDAO.findByUser(txtUserName.getText().toString(), psfUserPassword.getText().toString());			
 				if(getTxtUserName().getText().equals(mainDAO.getObj().getUsuario()) && getPsfUserPassword().getText().equals(mainDAO.getObj().getSenha())) {		
 		if(getTxtUserName().getText().equals("root") && getPsfUserPassword().getText().equals("1234")) {
