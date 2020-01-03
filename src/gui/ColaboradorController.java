@@ -30,153 +30,152 @@ import model.exceptions.ValidationException;
 import model.services.ColaboradorService;
 
 public class ColaboradorController implements Initializable {
-	
+
 	private static Stage stage;
 	private Colaborador entity;
-	ColaboradorService service = new ColaboradorService();	
+	private ColaboradorService service;
 	private List<DataChangeListener> dataChangeListeners = new ArrayList<>();
 
 	@FXML
-	private Button btnNovo;
+	private Button btn_Novo;
 	@FXML
-	private Button btnEditar;
+	private Button btn_Editar;
 	@FXML
-	private Button btnExcluir;
+	private Button btn_Excluir;
 	@FXML
-	private Button btnRelatorio;
+	private Button btn_Relatorio;
 	@FXML
-	private Button btnPesquisa;
+	private Button btn_Pesquisa;
 	@FXML
-	private Label lblUsuario;
+	private Label lbl_Usuario;
 	@FXML
-	private Label lblData;
+	private Label lbl_Data;
 	@FXML
-	private TextField txtId;
+	private TextField txt_Id;
 	@FXML
-	private TextField txtNome;
+	private TextField txt_Nome;
 	@FXML
-	private Button btnadicionarImagem;
+	private Button btn_adicionarImagem;
 	@FXML
-	private TextField txtCpf;
+	private TextField txt_Cpf;
 	@FXML
-	private TextField txtRg;
+	private TextField txt_Rg;
 	@FXML
-	private TextField txtNacionalidade;
+	private TextField txt_Nacionalidade;
 	@FXML
-	private TextField txtNaturalidade;
+	private TextField txt_Naturalidade;
 	@FXML
-	private RadioButton rdAtivo;
+	private RadioButton rd_Ativo;
 	@FXML
-	private RadioButton rdUsuarioDoSistema;
+	private RadioButton rd_UsuarioDoSistema;
 	@FXML
-	private TextField txtDataNascimento;
+	private TextField txt_DataNascimento;
 
 	@FXML
-	private TextField txtOrgaoEmissor;
+	private TextField txt_OrgaoEmissor;
 	@FXML
-	private TextField txtDtaEmissao;
+	private TextField txt_DtaEmissao;
 	@FXML
-	private TextField txtTituloEleitor;
+	private TextField txt_TituloEleitor;
 	@FXML
-	private TextField txtCdi;
+	private TextField txt_Cdi;
 	@FXML
-	private TextField txtCnh;
+	private TextField txt_Cnh;
 	@FXML
-	private TextField txtCnpj;
+	private TextField txt_Cnpj;
 	@FXML
-	private TextField txtRazaoSocial;
+	private TextField txt_RazaoSocial;
 	@FXML
-	private TextField txtCts;
+	private TextField txt_Cts;
 	@FXML
-	private TextField txtSerieCts;
+	private TextField txt_SerieCts;
 	@FXML
-	private TextField txtEmissaCts;
+	private TextField txt_EmissaCts;
 	@FXML
-	private TextField txtNis;
+	private TextField txt_Nis;
 	@FXML
-	private TextField txtReservista;
+	private TextField txt_Reservista;
 	@FXML
-	private TextField txtSus;
+	private TextField txt_Sus;
 	@FXML
-	private TextField txtConjuge;
+	private TextField txt_Conjuge;
 	@FXML
-	private TextField txtDependente;
+	private TextField txt_Dependente;
 	@FXML
-	private TextField txtDependente1;
+	private TextField txt_Dependente1;
 	@FXML
-	private TextField txtDependente2;
+	private TextField txt_Dependente2;
 	@FXML
-	private TextField txtCargo;
+	private TextField txt_Cargo;
 	@FXML
-	private TextField txtSetor;
+	private TextField txt_Setor;
 	@FXML
-	private TextField txtAdmissao;
+	private TextField txt_Admissao;
 
 	@FXML
-	private TextField txtCurso;
+	private TextField txt_Curso;
 	@FXML
-	private TextField txtConclusao;
+	private TextField txt_Conclusao;
 
 	@FXML
-	private TextField txtCurso1;
+	private TextField txt_Curso1;
 	@FXML
-	private TextField txtConclusao1;
+	private TextField txt_Conclusao1;
 	@FXML
-	private TextField txtAfastamento;
+	private TextField txt_Afastamento;
 	@FXML
-	private TextField txtMotivoAfastamento;
+	private TextField txt_MotivoAfastamento;
 	@FXML
-	private TextField txtRetornoAfastamento;
+	private TextField txt_RetornoAfastamento;
 	@FXML
-	private TextField txtVencimentoContrato;
+	private TextField txt_VencimentoContrato;
 	@FXML
-	private TextField txtProrrogacaoContrato;
+	private TextField txt_ProrrogacaoContrato;
 	@FXML
-	private TextField txtFormaPagamento;
+	private TextField txt_FormaPagamento;
 	@FXML
-	private TextField txtDemissao;
+	private TextField txt_Demissao;
 	@FXML
-	private TextField txtBanco;
+	private TextField txt_Banco;
 	@FXML
-	private TextField txtAgencia;
+	private TextField txt_Agencia;
 	@FXML
-	private TextField txtConta;
+	private TextField txt_Conta;
 	@FXML
-	private TextField txtDigito;
+	private TextField txt_Digito;
 	@FXML
-	private TextField txtTelefone;
+	private TextField txt_Telefone;
 	@FXML
-	private TextField txtCelular;
+	private TextField txt_Celular;
 	@FXML
-	private TextField txtCelular1;
+	private TextField txt_Celular1;
 	@FXML
-	private TextField txtEmail;
+	private TextField txt_Email;
 	@FXML
-	private TextField txtLogradouro;
+	private TextField txt_Logradouro;
 	@FXML
-	private TextField txtNumero;
+	private TextField txt_Numero;
 	@FXML
-	private TextField txtComplemento;
+	private TextField txt_Complemento;
 	@FXML
-	private TextField txtBairro;
+	private TextField txt_Bairro;
 	@FXML
-	private TextField txtCidade;
+	private TextField txt_Cidade;
 	@FXML
-	private TextField txtUf;
+	private TextField txt_Uf;
 	@FXML
-	private TextField txtCep;
+	private TextField txt_Cep;
 	@FXML
-	private TextField txtPais;
+	private TextField txt_Pais;
 	@FXML
-	private Button btnDocumentos;
+	private Button btn_Documentos;
 	@FXML
-	private Button btnSalvar;
+	private Button btn_Salvar;
 	@FXML
-	private Button btnSair;
+	private Button btn_Sair;
 	@FXML
 	private AnchorPane conteudoColaborador;
-	
-	
+
 	public static Stage getStage() {
 		return stage;
 	}
@@ -184,207 +183,204 @@ public class ColaboradorController implements Initializable {
 	public static void setStage(Stage stage) {
 		ColaboradorController.stage = stage;
 	}
-	
-	public void onLabelUsuario() {
-		LblUsuario dao = new LblUsuario();
-		String login = dao.getUsuario();
-		lblUsuario.setText(login);	
-		System.out.println(login+"foi");
-	}
 
 	private void fecharColaborador() {
 		Utils utils = new Utils();
 		utils.fechar();
 	}
+
 	@FXML
 	public void onbtn_sair() {
 		fecharColaborador();
 	}
-	
+
 	@FXML
 	public void onradioAtivo() {
-		if(rdAtivo.isSelected() == true) {
-			rdAtivo.setSelected(true);
-		}else {
-			rdAtivo.setSelected(false);
+		if (rd_Ativo.isSelected() == true) {
+			rd_Ativo.setSelected(true);
+		} else {
+			rd_Ativo.setSelected(false);
 		}
 	}
+
 	@FXML
 	public void onradioUsuarioDoSistema() {
-		if(rdUsuarioDoSistema.isSelected() == true) {
-			rdUsuarioDoSistema.setSelected(true);
-		}else {
-			rdUsuarioDoSistema.setSelected(false);
+		if (rd_UsuarioDoSistema.isSelected() == true) {
+			rd_UsuarioDoSistema.setSelected(true);
+		} else {
+			rd_UsuarioDoSistema.setSelected(false);
 		}
 	}
-	
+
 	private void tela() {
 		PrincipalController principal = new PrincipalController();
-		
+
 	}
-	
+
 	public void setColaborador(Colaborador entity) {
 		this.entity = entity;
 	}
 
 	private void camposInativos() {
-		btnEditar.setDisable(true);
-		btnExcluir.setDisable(true);
-		btnRelatorio.setDisable(true);
-		lblUsuario.setDisable(true);
-		lblData.setDisable(true);
-		txtId.setDisable(true);
-		txtNome.setDisable(true);
-		btnadicionarImagem.setDisable(true);
-		txtCpf.setDisable(true);
-		txtRg.setDisable(true);
-		txtNacionalidade.setDisable(true);
-		txtNaturalidade.setDisable(true);
-		txtDataNascimento.setDisable(true);
-		txtOrgaoEmissor.setDisable(true);
-		txtDtaEmissao.setDisable(true);
-		txtTituloEleitor.setDisable(true);
-		txtCdi.setDisable(true);
-		txtCnh.setDisable(true);
-		txtCnpj.setDisable(true);
-		txtRazaoSocial.setDisable(true);
-		txtCts.setDisable(true);
-		txtSerieCts.setDisable(true);
-		txtEmissaCts.setDisable(true);
-		txtNis.setDisable(true);
-		txtReservista.setDisable(true);
-		txtSus.setDisable(true);
-		txtConjuge.setDisable(true);
-		txtDependente.setDisable(true);
-		txtDependente1.setDisable(true);
-		txtDependente2.setDisable(true);
-		txtCargo.setDisable(true);
-		txtSetor.setDisable(true);
-		txtAdmissao.setDisable(true);
-		txtCurso.setDisable(true);
-		txtConclusao.setDisable(true);
-		txtCurso1.setDisable(true);
-		txtConclusao1.setDisable(true);
-		txtAfastamento.setDisable(true);
-		txtMotivoAfastamento.setDisable(true);
-		txtRetornoAfastamento.setDisable(true);
-		txtVencimentoContrato.setDisable(true);
-		txtProrrogacaoContrato.setDisable(true);
-		txtFormaPagamento.setDisable(true);
-		txtDemissao.setDisable(true);
-		txtBanco.setDisable(true);
-		txtAgencia.setDisable(true);
-		txtConta.setDisable(true);
-		txtDigito.setDisable(true);
-		txtTelefone.setDisable(true);
-		txtCelular.setDisable(true);
-		txtCelular1.setDisable(true);
-		txtEmail.setDisable(true);
-		txtLogradouro.setDisable(true);
-		txtNumero.setDisable(true);
-		txtComplemento.setDisable(true);
-		txtBairro.setDisable(true);
-		txtCidade.setDisable(true);
-		txtUf.setDisable(true);
-		txtCep.setDisable(true);
-		txtPais.setDisable(true);
-		btnDocumentos.setDisable(true);
-		btnSalvar.setDisable(true);
+		btn_Editar.setDisable(true);
+		btn_Excluir.setDisable(true);
+		btn_Relatorio.setDisable(true);
+		lbl_Usuario.setDisable(true);
+		// lblData.setDisable(true);
+		// txtId.setDisable(true);
+		txt_Nome.setDisable(true);
+		btn_adicionarImagem.setDisable(true);
+		txt_Cpf.setDisable(true);
+		txt_Rg.setDisable(true);
+		txt_Nacionalidade.setDisable(true);
+		txt_Naturalidade.setDisable(true);
+		txt_DataNascimento.setDisable(true);
+		txt_OrgaoEmissor.setDisable(true);
+		txt_DtaEmissao.setDisable(true);
+		txt_TituloEleitor.setDisable(true);
+		txt_Cdi.setDisable(true);
+		txt_Cnh.setDisable(true);
+		txt_Cnpj.setDisable(true);
+		txt_RazaoSocial.setDisable(true);
+		txt_Cts.setDisable(true);
+		txt_SerieCts.setDisable(true);
+		txt_EmissaCts.setDisable(true);
+		txt_Nis.setDisable(true);
+		txt_Reservista.setDisable(true);
+		txt_Sus.setDisable(true);
+		txt_Conjuge.setDisable(true);
+		txt_Dependente.setDisable(true);
+		txt_Dependente1.setDisable(true);
+		txt_Dependente2.setDisable(true);
+		txt_Cargo.setDisable(true);
+		txt_Setor.setDisable(true);
+		txt_Admissao.setDisable(true);
+		txt_Curso.setDisable(true);
+		txt_Conclusao.setDisable(true);
+		txt_Curso1.setDisable(true);
+		txt_Conclusao1.setDisable(true);
+		txt_Afastamento.setDisable(true);
+		txt_MotivoAfastamento.setDisable(true);
+		txt_RetornoAfastamento.setDisable(true);
+		txt_VencimentoContrato.setDisable(true);
+		txt_ProrrogacaoContrato.setDisable(true);
+		txt_FormaPagamento.setDisable(true);
+		txt_Demissao.setDisable(true);
+		txt_Banco.setDisable(true);
+		txt_Agencia.setDisable(true);
+		txt_Conta.setDisable(true);
+		txt_Digito.setDisable(true);
+		txt_Telefone.setDisable(true);
+		txt_Celular.setDisable(true);
+		txt_Celular1.setDisable(true);
+		txt_Email.setDisable(true);
+		txt_Logradouro.setDisable(true);
+		txt_Numero.setDisable(true);
+		txt_Complemento.setDisable(true);
+		txt_Bairro.setDisable(true);
+		txt_Cidade.setDisable(true);
+		txt_Uf.setDisable(true);
+		txt_Cep.setDisable(true);
+		txt_Pais.setDisable(true);
+		btn_Documentos.setDisable(true);
+		btn_Salvar.setDisable(true);
 
 	}
 
 	private void novo() {
-		btnEditar.setDisable(false);
-		btnExcluir.setDisable(false);
-		btnRelatorio.setDisable(false);
-		lblUsuario.setDisable(false);
-		lblData.setDisable(false);
-		txtId.setDisable(false);
-		txtNome.setDisable(false);
-		btnadicionarImagem.setDisable(false);
-		txtCpf.setDisable(false);
-		txtRg.setDisable(false);
-		txtNacionalidade.setDisable(false);
-		txtNaturalidade.setDisable(false);
-		txtDataNascimento.setDisable(false);
-		txtOrgaoEmissor.setDisable(false);
-		txtDtaEmissao.setDisable(false);
-		txtTituloEleitor.setDisable(false);
-		txtCdi.setDisable(false);
-		txtCnh.setDisable(false);
-		txtCnpj.setDisable(false);
-		txtRazaoSocial.setDisable(false);
-		txtCts.setDisable(false);
-		txtSerieCts.setDisable(false);
-		txtEmissaCts.setDisable(false);
-		txtNis.setDisable(false);
-		txtReservista.setDisable(false);
-		txtSus.setDisable(false);
-		txtConjuge.setDisable(false);
-		txtDependente.setDisable(false);
-		txtDependente1.setDisable(false);
-		txtDependente2.setDisable(false);
-		txtCargo.setDisable(false);
-		txtSetor.setDisable(false);
-		txtAdmissao.setDisable(false);
-		txtCurso.setDisable(false);
-		txtConclusao.setDisable(false);
-		txtCurso1.setDisable(false);
-		txtConclusao1.setDisable(false);
-		txtAfastamento.setDisable(false);
-		txtMotivoAfastamento.setDisable(false);
-		txtRetornoAfastamento.setDisable(false);
-		txtVencimentoContrato.setDisable(false);
-		txtProrrogacaoContrato.setDisable(false);
-		txtFormaPagamento.setDisable(false);
-		txtDemissao.setDisable(false);
-		txtBanco.setDisable(false);
-		txtAgencia.setDisable(false);
-		txtConta.setDisable(false);
-		txtDigito.setDisable(false);
-		txtTelefone.setDisable(false);
-		txtCelular.setDisable(false);
-		txtCelular1.setDisable(false);
-		txtEmail.setDisable(false);
-		txtLogradouro.setDisable(false);
-		txtNumero.setDisable(false);
-		txtComplemento.setDisable(false);
-		txtBairro.setDisable(false);
-		txtCidade.setDisable(false);
-		txtUf.setDisable(false);
-		txtCep.setDisable(false);
-		txtPais.setDisable(false);
-		btnDocumentos.setDisable(false);
-		btnSalvar.setDisable(false);
+		btn_Editar.setDisable(false);
+		btn_Excluir.setDisable(false);
+		btn_Relatorio.setDisable(false);
+		lbl_Usuario.setDisable(false);
+		// lblData.setDisable(false);
+		// txtId.setDisable(false);
+		txt_Nome.setDisable(false);
+		btn_adicionarImagem.setDisable(false);
+		txt_Cpf.setDisable(false);
+		txt_Rg.setDisable(false);
+		txt_Nacionalidade.setDisable(false);
+		txt_Naturalidade.setDisable(false);
+		txt_DataNascimento.setDisable(false);
+		txt_OrgaoEmissor.setDisable(false);
+		txt_DtaEmissao.setDisable(false);
+		txt_TituloEleitor.setDisable(false);
+		txt_Cdi.setDisable(false);
+		txt_Cnh.setDisable(false);
+		txt_Cnpj.setDisable(false);
+		txt_RazaoSocial.setDisable(false);
+		txt_Cts.setDisable(false);
+		txt_SerieCts.setDisable(false);
+		txt_EmissaCts.setDisable(false);
+		txt_Nis.setDisable(false);
+		txt_Reservista.setDisable(false);
+		txt_Sus.setDisable(false);
+		txt_Conjuge.setDisable(false);
+		txt_Dependente.setDisable(false);
+		txt_Dependente1.setDisable(false);
+		txt_Dependente2.setDisable(false);
+		txt_Cargo.setDisable(false);
+		txt_Setor.setDisable(false);
+		txt_Admissao.setDisable(false);
+		txt_Curso.setDisable(false);
+		txt_Conclusao.setDisable(false);
+		txt_Curso1.setDisable(false);
+		txt_Conclusao1.setDisable(false);
+		txt_Afastamento.setDisable(false);
+		txt_MotivoAfastamento.setDisable(false);
+		txt_RetornoAfastamento.setDisable(false);
+		txt_VencimentoContrato.setDisable(false);
+		txt_ProrrogacaoContrato.setDisable(false);
+		txt_FormaPagamento.setDisable(false);
+		txt_Demissao.setDisable(false);
+		txt_Banco.setDisable(false);
+		txt_Agencia.setDisable(false);
+		txt_Conta.setDisable(false);
+		txt_Digito.setDisable(false);
+		txt_Telefone.setDisable(false);
+		txt_Celular.setDisable(false);
+		txt_Celular1.setDisable(false);
+		txt_Email.setDisable(false);
+		txt_Logradouro.setDisable(false);
+		txt_Numero.setDisable(false);
+		txt_Complemento.setDisable(false);
+		txt_Bairro.setDisable(false);
+		txt_Cidade.setDisable(false);
+		txt_Uf.setDisable(false);
+		txt_Cep.setDisable(false);
+		txt_Pais.setDisable(false);
+		btn_Documentos.setDisable(false);
+		btn_Salvar.setDisable(false);
 
 	}
 
-	public void onbtnSalvar(ActionEvent event) {
-		if (entity == null) {
-			throw new IllegalStateException("Entity was null");
-		}
-
+	@FXML
+	public void onbtnSalvar(ActionEvent event) {	
 		try {
-			//entity = getFormData();
+				System.out.println("01");
 			service.saveOrUpdate(entity);
-			//notifyDataChangeListeners();
+			System.out.println("01");
 			Utils.currentStage(event).close();
+			System.out.println("01");
 		} catch (ValidationException e) {
-			
+
 		} catch (DbException e) {
 			Alerts.showAlert("Error saving object", null, e.getMessage(), AlertType.ERROR);
 		}
 	}
-		
-public void onBtnNovo(ActionEvent e) {
+
+	public void onBtnNovo(ActionEvent e) {
 		novo();
 	}
-	
 
-	
+	public void onLabelUsuario() {
+		LblUsuario dao = new LblUsuario();
+		String login = dao.getUsuario();
+		lbl_Usuario.setText(login);
+
+	}
 
 	@Override
-	public void initialize(URL url, ResourceBundle rb) {		
+	public void initialize(URL url, ResourceBundle rb) {
 		camposInativos();
 		onLabelUsuario();
 	}

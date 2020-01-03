@@ -6,6 +6,7 @@ import java.util.Optional;
 import java.util.ResourceBundle;
 
 import gui.util.Alerts;
+import gui.util.LblUsuario;
 import gui.util.Utils;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
@@ -77,7 +78,12 @@ public class desenhoController implements Initializable{
 	@FXML
 	private Button btn_sair;
 	
-	
+	public void onLabelUsuario() {
+		LblUsuario dao = new LblUsuario();
+		String login = dao.getUsuario();
+		lbl_usuario.setText(login);	
+		
+	}
 
 	public static Stage getStage() {
 		return stage;

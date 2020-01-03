@@ -68,7 +68,7 @@ public class PrincipalController implements Initializable {
 		LblUsuario dao = new LblUsuario();
 		String login = dao.getUsuario();
 		lblUsuario.setText(login);	
-		System.out.println(login+"foi");
+		
 	}
 
 	@FXML

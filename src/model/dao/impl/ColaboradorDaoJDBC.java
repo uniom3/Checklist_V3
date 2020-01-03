@@ -16,7 +16,8 @@ import model.entities.Colaborador;
 
 public class ColaboradorDaoJDBC implements ColaboradorDao {
 
-	private Connection conn;
+	Connection conn = null;
+	
 
 	public ColaboradorDaoJDBC(Connection conn) {
 		this.conn = conn;
@@ -24,6 +25,7 @@ public class ColaboradorDaoJDBC implements ColaboradorDao {
 
 	@Override
 	public Colaborador findById(Integer id) {
+		conn = DB.getConnection();
 		PreparedStatement st = null;
 		ResultSet rs = null;
 		try {
@@ -196,6 +198,7 @@ public class ColaboradorDaoJDBC implements ColaboradorDao {
 
 	@Override
 	public void insert(Colaborador obj) {
+		conn = DB.getConnection();
 		PreparedStatement st = null;
 		try {
 			st = conn.prepareStatement("INSERT INTO tb_colaborador " + "(nome)" + "(ativo)" + "(usuarioSistema)"
@@ -242,6 +245,7 @@ public class ColaboradorDaoJDBC implements ColaboradorDao {
 
 	@Override
 	public void update(Colaborador obj) {
+		conn = DB.getConnection();
 		PreparedStatement st = null;
 		try {
 			st = conn.prepareStatement("UPDATE tb_colaborador " + "SET nome= ?" + "SET ativo= ?"
@@ -336,6 +340,7 @@ public class ColaboradorDaoJDBC implements ColaboradorDao {
 
 	@Override
 	public void deleteById(Integer id) {
+		conn = DB.getConnection();
 		PreparedStatement st = null;
 		try {
 			st = conn.prepareStatement("DELETE FROM tb_colaborador WHERE Id = ?");

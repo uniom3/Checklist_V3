@@ -15,27 +15,27 @@
 
 <ScrollPane maxHeight="-Infinity" maxWidth="-Infinity" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="gui.ColaboradorController">
    <content>
-      <AnchorPane cache="true" minHeight="0.0" minWidth="0.0">
+      <AnchorPane cache="true" minHeight="0.0" minWidth="0.0" prefHeight="771.0" prefWidth="1064.0">
          <children>
-            <Button fx:id="btnNovo" layoutX="220.0" layoutY="14.0" mnemonicParsing="false" onAction="#onBtnNovo" prefHeight="25.0" prefWidth="50.0" text="Novo" textAlignment="CENTER" />
-            <Button fx:id="btnEditar" layoutX="287.0" layoutY="14.0" mnemonicParsing="false" prefHeight="25.0" prefWidth="50.0" text="Editar" />
-            <Button fx:id="btnExcluir" layoutX="349.0" layoutY="14.0" mnemonicParsing="false" prefHeight="25.0" prefWidth="50.0" text="Excluir" />
-            <Button fx:id="btnRelatorio" layoutX="418.0" layoutY="14.0" mnemonicParsing="false" prefHeight="25.0" prefWidth="70.0" text="Relatório" />
-            <Button fx:id="btnPesquisa" layoutX="508.0" layoutY="14.0" mnemonicParsing="false" prefHeight="25.0" prefWidth="70.0" text="Pesquisa" />
-            <Label fx:id="lblUsuario" alignment="TOP_RIGHT" layoutX="928.0" layoutY="14.0" prefHeight="25.0" prefWidth="112.0" />
-            <Label fx:id="lblData" layoutX="965.0" layoutY="39.0" prefHeight="25.0" prefWidth="70.0" />
-            <Button fx:id="btnadicionarImagem" layoutX="9.0" layoutY="274.0" mnemonicParsing="false" prefHeight="25.0" prefWidth="153.0" text="Adicionar Imagem" />
+            <Button fx:id="btn_Novo" layoutX="220.0" layoutY="14.0" mnemonicParsing="false" onAction="#onBtnNovo" prefHeight="25.0" prefWidth="50.0" text="Novo" textAlignment="CENTER" />
+            <Button fx:id="btn_Editar" layoutX="287.0" layoutY="14.0" mnemonicParsing="false" prefHeight="25.0" prefWidth="50.0" text="Editar" />
+            <Button fx:id="btn_Excluir" layoutX="349.0" layoutY="14.0" mnemonicParsing="false" prefHeight="25.0" prefWidth="50.0" text="Excluir" />
+            <Button fx:id="btn_Relatorio" layoutX="418.0" layoutY="14.0" mnemonicParsing="false" prefHeight="25.0" prefWidth="70.0" text="Relatório" />
+            <Button fx:id="btn_Pesquisa" layoutX="508.0" layoutY="14.0" mnemonicParsing="false" prefHeight="25.0" prefWidth="70.0" text="Pesquisa" />
+            <Label fx:id="lbl_Usuario" alignment="TOP_RIGHT" layoutX="928.0" layoutY="14.0" prefHeight="25.0" prefWidth="112.0" />
+            <Label fx:id="lbl_Data" layoutX="965.0" layoutY="39.0" prefHeight="25.0" prefWidth="70.0" />
+            <Button fx:id="btn_adicionarImagem" layoutX="9.0" layoutY="274.0" mnemonicParsing="false" prefHeight="25.0" prefWidth="153.0" text="Adicionar Imagem" />
             <Label layoutX="166.0" layoutY="98.0" prefHeight="25.0" prefWidth="58.0" text="Código" />
-            <TextField fx:id="txtCodigo" editable="false" layoutX="165.0" layoutY="131.0" maxHeight="25.0" maxWidth="60.0" prefHeight="25.0" prefWidth="60.0" />
+            <TextField fx:id="txt_Id" editable="false" layoutX="165.0" layoutY="131.0" maxHeight="25.0" maxWidth="60.0" prefHeight="25.0" prefWidth="60.0" />
             <Label layoutX="252.0" layoutY="98.0" prefHeight="25.0" prefWidth="105.0" text="Nome " />
-            <TextField fx:id="txtNome" layoutX="252.0" layoutY="131.0" maxHeight="25.0" maxWidth="722.0" prefHeight="25.0" prefWidth="665.0" />
+            <TextField fx:id="txt_Nome" layoutX="252.0" layoutY="131.0" maxHeight="25.0" maxWidth="722.0" prefHeight="25.0" prefWidth="665.0" />
             <TabPane layoutX="6.0" layoutY="299.0" prefHeight="358.0" prefWidth="929.0" tabClosingPolicy="UNAVAILABLE" AnchorPane.bottomAnchor="112.0" AnchorPane.leftAnchor="1.0" AnchorPane.rightAnchor="128.0" AnchorPane.topAnchor="299.0">
                <tabs>
                   <Tab text="Dados Pessoais">
                      <content>
                         <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="376.0" prefWidth="973.0">
                            <children>
-                              <TextField fx:id="txtCpf" layoutX="32.0" layoutY="39.0" maxHeight="25.0" maxWidth="148.0" prefHeight="25.0" prefWidth="148.0" />
+                              <TextField fx:id="txt_Cpf" layoutX="32.0" layoutY="39.0" maxHeight="25.0" maxWidth="148.0" prefHeight="25.0" prefWidth="148.0" />
                               <Label layoutX="32.0" layoutY="14.0" prefHeight="25.0" prefWidth="50.0" text="CPF" />
                               <Label layoutX="752.0" layoutY="64.0" prefHeight="25.0" prefWidth="50.0" text="CNH" />
                               <Label layoutX="627.0" layoutY="64.0" prefHeight="25.0" prefWidth="50.0" text="CDI" />
@@ -48,41 +48,41 @@
                               <Label layoutX="506.0" layoutY="12.0" prefHeight="25.0" prefWidth="50.0" text="Sexo" />
                               <Label layoutX="350.0" layoutY="12.0" prefHeight="25.0" prefWidth="147.0" text="Naturalidade" />
                               <Label layoutX="194.0" layoutY="12.0" prefHeight="25.0" prefWidth="149.0" text="Nacionalidade" />
-                              <TextField fx:id="txtNacionalidade" layoutX="194.0" layoutY="37.0" maxHeight="25.0" maxWidth="148.0" prefHeight="25.0" prefWidth="148.0" />
-                              <TextField fx:id="txtNaturalidade" layoutX="350.0" layoutY="37.0" maxHeight="25.0" maxWidth="148.0" prefHeight="25.0" prefWidth="144.0" />
+                              <TextField fx:id="txt_Nacionalidade" layoutX="194.0" layoutY="37.0" maxHeight="25.0" maxWidth="148.0" prefHeight="25.0" prefWidth="148.0" />
+                              <TextField fx:id="txt_Naturalidade" layoutX="350.0" layoutY="37.0" maxHeight="25.0" maxWidth="148.0" prefHeight="25.0" prefWidth="144.0" />
                               <ComboBox fx:id="comboBoxSexo" layoutX="506.0" layoutY="37.0" prefHeight="25.0" prefWidth="112.0" />
                               <ComboBox fx:id="comboBoxEstadoCivil" layoutX="752.0" layoutY="39.0" prefHeight="25.0" prefWidth="152.0" />
-                              <TextField fx:id="txtRg" layoutX="32.0" layoutY="89.0" maxHeight="25.0" maxWidth="148.0" prefHeight="25.0" prefWidth="148.0" />
-                              <TextField fx:id="txtOrgaoEmissor" layoutX="194.0" layoutY="89.0" maxHeight="25.0" maxWidth="148.0" prefHeight="25.0" prefWidth="147.0" />
-                              <TextField fx:id="txtDtaEmissao" layoutX="350.0" layoutY="89.0" maxHeight="25.0" maxWidth="148.0" prefHeight="25.0" prefWidth="145.0" />
-                              <TextField fx:id="txtTituloEleitor" layoutX="506.0" layoutY="89.0" maxHeight="25.0" maxWidth="148.0" prefHeight="25.0" prefWidth="116.0" />
-                              <TextField fx:id="txtReservista" layoutX="665.0" layoutY="189.0" maxHeight="25.0" maxWidth="148.0" prefHeight="25.0" prefWidth="116.0" />
-                              <TextField fx:id="txtCnh" layoutX="752.0" layoutY="89.0" maxHeight="25.0" maxWidth="151.0" prefHeight="25.0" prefWidth="151.0" />
+                              <TextField fx:id="txt_Rg" layoutX="32.0" layoutY="89.0" maxHeight="25.0" maxWidth="148.0" prefHeight="25.0" prefWidth="148.0" />
+                              <TextField fx:id="txt_OrgaoEmissor" layoutX="194.0" layoutY="89.0" maxHeight="25.0" maxWidth="148.0" prefHeight="25.0" prefWidth="147.0" />
+                              <TextField fx:id="txt_DtaEmissao" layoutX="350.0" layoutY="89.0" maxHeight="25.0" maxWidth="148.0" prefHeight="25.0" prefWidth="145.0" />
+                              <TextField fx:id="txt_TituloEleitor" layoutX="506.0" layoutY="89.0" maxHeight="25.0" maxWidth="148.0" prefHeight="25.0" prefWidth="116.0" />
+                              <TextField fx:id="txt_Reservista" layoutX="665.0" layoutY="189.0" maxHeight="25.0" maxWidth="148.0" prefHeight="25.0" prefWidth="116.0" />
+                              <TextField fx:id="txt_Cnh" layoutX="752.0" layoutY="89.0" maxHeight="25.0" maxWidth="151.0" prefHeight="25.0" prefWidth="151.0" />
                               <Label layoutX="32.0" layoutY="114.0" prefHeight="25.0" prefWidth="50.0" text="CNPJ" />
-                              <TextField fx:id="txtCnpj" layoutX="32.0" layoutY="139.0" maxHeight="25.0" maxWidth="148.0" prefHeight="25.0" prefWidth="148.0" />
+                              <TextField fx:id="txt_Cnpj" layoutX="32.0" layoutY="139.0" maxHeight="25.0" maxWidth="148.0" prefHeight="25.0" prefWidth="148.0" />
                               <Label layoutX="32.0" layoutY="164.0" prefHeight="25.0" prefWidth="50.0" text="CTS" />
-                              <TextField fx:id="txtCts" layoutX="32.0" layoutY="189.0" maxHeight="25.0" maxWidth="148.0" prefHeight="25.0" prefWidth="148.0" />
+                              <TextField fx:id="txt_Cts" layoutX="32.0" layoutY="189.0" maxHeight="25.0" maxWidth="148.0" prefHeight="25.0" prefWidth="148.0" />
                               <Label layoutX="32.0" layoutY="214.0" prefHeight="25.0" prefWidth="150.0" text="Esposa(o)" />
-                              <TextField fx:id="txtConjuge" layoutX="32.0" layoutY="239.0" maxHeight="25.0" maxWidth="421.0" prefHeight="25.0" prefWidth="421.0" />
+                              <TextField fx:id="txt_Conjuge" layoutX="32.0" layoutY="239.0" maxHeight="25.0" maxWidth="421.0" prefHeight="25.0" prefWidth="421.0" />
                               <Label layoutX="32.0" layoutY="264.0" prefHeight="25.0" prefWidth="147.0" text="Dependente" />
-                              <TextField fx:id="txtDependente1" layoutX="32.0" layoutY="289.0" maxHeight="25.0" maxWidth="421.0" prefHeight="25.0" prefWidth="421.0" />
+                              <TextField fx:id="txt_Dependente1" layoutX="32.0" layoutY="289.0" maxHeight="25.0" maxWidth="421.0" prefHeight="25.0" prefWidth="421.0" />
                               <Label layoutX="461.0" layoutY="214.0" prefHeight="25.0" prefWidth="147.0" text="Dependente" />
-                              <TextField fx:id="txtDependente" layoutX="461.0" layoutY="239.0" maxHeight="25.0" maxWidth="453.0" prefHeight="25.0" prefWidth="453.0" />
+                              <TextField fx:id="txt_Dependente" layoutX="461.0" layoutY="239.0" maxHeight="25.0" maxWidth="453.0" prefHeight="25.0" prefWidth="453.0" />
                               <Label layoutX="461.0" layoutY="264.0" prefHeight="25.0" prefWidth="147.0" text="Dependente" />
-                              <TextField fx:id="txtDependente2" layoutX="461.0" layoutY="289.0" maxHeight="25.0" maxWidth="453.0" prefHeight="25.0" prefWidth="453.0" />
+                              <TextField fx:id="txt_Dependente2" layoutX="461.0" layoutY="289.0" maxHeight="25.0" maxWidth="453.0" prefHeight="25.0" prefWidth="453.0" />
                               <Label layoutX="195.0" layoutY="114.0" prefHeight="25.0" prefWidth="146.0" text="Razão Social " />
-                              <TextField fx:id="txtRazaoSocial" layoutX="195.0" layoutY="139.0" maxHeight="25.0" maxWidth="552.0" prefHeight="25.0" prefWidth="552.0" />
+                              <TextField fx:id="txt_RazaoSocial" layoutX="195.0" layoutY="139.0" maxHeight="25.0" maxWidth="552.0" prefHeight="25.0" prefWidth="552.0" />
                               <Label layoutX="195.0" layoutY="164.0" prefHeight="25.0" prefWidth="148.0" text="Série da CTS" />
-                              <TextField fx:id="txtSerieCts" layoutX="195.0" layoutY="189.0" maxHeight="25.0" maxWidth="148.0" prefHeight="25.0" prefWidth="148.0" />
+                              <TextField fx:id="txt_SerieCts" layoutX="195.0" layoutY="189.0" maxHeight="25.0" maxWidth="148.0" prefHeight="25.0" prefWidth="148.0" />
                               <Label layoutX="350.0" layoutY="164.0" prefHeight="25.0" prefWidth="147.0" text="Emissão da CTS" />
-                              <TextField fx:id="txtEmissaCts" layoutX="350.0" layoutY="189.0" maxHeight="25.0" maxWidth="148.0" prefHeight="25.0" prefWidth="148.0" />
+                              <TextField fx:id="txt_EmissaCts" layoutX="350.0" layoutY="189.0" maxHeight="25.0" maxWidth="148.0" prefHeight="25.0" prefWidth="148.0" />
                               <Label layoutX="506.0" layoutY="164.0" prefHeight="25.0" prefWidth="147.0" text="NIS/PIS/PASEP ou NIT" />
-                              <TextField fx:id="txtNis" layoutX="506.0" layoutY="189.0" maxHeight="25.0" maxWidth="148.0" prefHeight="25.0" prefWidth="148.0" />
+                              <TextField fx:id="txt_Nis" layoutX="506.0" layoutY="189.0" maxHeight="25.0" maxWidth="148.0" prefHeight="25.0" prefWidth="148.0" />
                               <Label layoutX="665.0" layoutY="164.0" prefHeight="25.0" prefWidth="118.0" text="Reservista" />
                               <Label layoutX="798.0" layoutY="164.0" prefHeight="25.0" prefWidth="147.0" text="Cartão do SUS" />
-                              <TextField fx:id="txtSus" layoutX="798.0" layoutY="189.0" maxHeight="25.0" maxWidth="148.0" prefHeight="25.0" prefWidth="116.0" />
-                              <TextField fx:id="txtCdi" layoutX="630.0" layoutY="89.0" maxHeight="25.0" maxWidth="148.0" prefHeight="25.0" prefWidth="116.0" />
-                              <TextField fx:id="txtDataNascimento" layoutX="630.0" layoutY="37.0" maxHeight="25.0" maxWidth="148.0" prefHeight="25.0" prefWidth="116.0" />
+                              <TextField fx:id="txt_Sus" layoutX="798.0" layoutY="189.0" maxHeight="25.0" maxWidth="148.0" prefHeight="25.0" prefWidth="116.0" />
+                              <TextField fx:id="txt_Cdi" layoutX="630.0" layoutY="89.0" maxHeight="25.0" maxWidth="148.0" prefHeight="25.0" prefWidth="116.0" />
+                              <TextField fx:id="txt_DataNascimento" layoutX="630.0" layoutY="37.0" maxHeight="25.0" maxWidth="148.0" prefHeight="25.0" prefWidth="116.0" />
                            </children>
                         </AnchorPane>
                      </content>
@@ -91,46 +91,46 @@
                      <content>
                         <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="343.0" prefWidth="973.0">
                            <children>
-                              <TextField fx:id="txtCargo" layoutX="30.0" layoutY="31.0" prefHeight="25.0" prefWidth="353.0" />
+                              <TextField fx:id="txt_Cargo" layoutX="30.0" layoutY="31.0" prefHeight="25.0" prefWidth="353.0" />
                               <Label layoutX="30.0" layoutY="6.0" prefHeight="25.0" prefWidth="129.0" text="Cargo" />
-                              <TextField fx:id="txtSetor" layoutX="394.0" layoutY="31.0" prefHeight="25.0" prefWidth="350.0" />
+                              <TextField fx:id="txt_Setor" layoutX="394.0" layoutY="31.0" prefHeight="25.0" prefWidth="350.0" />
                               <Label layoutX="394.0" layoutY="6.0" prefHeight="25.0" prefWidth="129.0" text="Setor" />
-                              <TextField fx:id="txtAdmissao" layoutX="772.0" layoutY="31.0" prefHeight="25.0" prefWidth="130.0" />
+                              <TextField fx:id="txt_Admissao" layoutX="772.0" layoutY="31.0" prefHeight="25.0" prefWidth="130.0" />
                               <Label layoutX="772.0" layoutY="6.0" prefHeight="25.0" prefWidth="129.0" text="Admissão " />
                               <Label layoutX="30.0" layoutY="56.0" prefHeight="25.0" prefWidth="135.0" text="Grau" />
                               <Label layoutX="171.0" layoutY="56.0" prefHeight="25.0" prefWidth="117.0" text="Curso" />
                               <Label layoutX="772.0" layoutY="56.0" prefHeight="25.0" prefWidth="129.0" text="Conclusão" />
-                              <TextField fx:id="txtCurso" layoutX="171.0" layoutY="81.0" prefHeight="25.0" prefWidth="575.0" />
-                              <TextField fx:id="txtConclusao" layoutX="772.0" layoutY="81.0" prefHeight="25.0" prefWidth="130.0" />
+                              <TextField fx:id="txt_Curso" layoutX="171.0" layoutY="81.0" prefHeight="25.0" prefWidth="575.0" />
+                              <TextField fx:id="txt_Conclusao" layoutX="772.0" layoutY="81.0" prefHeight="25.0" prefWidth="130.0" />
                               <ComboBox fx:id="comboBoxGrau" layoutX="33.0" layoutY="81.0" prefHeight="25.0" prefWidth="131.0" />
                               <Label layoutX="30.0" layoutY="256.0" prefHeight="25.0" prefWidth="129.0" text="Tipo de Conta" />
                               <Label layoutX="172.0" layoutY="106.0" prefHeight="25.0" prefWidth="186.0" text="Curso" />
                               <Label layoutX="775.0" layoutY="106.0" prefHeight="25.0" prefWidth="129.0" text="Conclusão" />
-                              <TextField fx:id="txtCurso1" layoutX="172.0" layoutY="131.0" prefHeight="25.0" prefWidth="577.0" />
-                              <TextField fx:id="txtConclusao1" layoutX="775.0" layoutY="131.0" prefHeight="25.0" prefWidth="130.0" />
+                              <TextField fx:id="txt_Curso1" layoutX="172.0" layoutY="131.0" prefHeight="25.0" prefWidth="577.0" />
+                              <TextField fx:id="txt_Conclusao1" layoutX="775.0" layoutY="131.0" prefHeight="25.0" prefWidth="130.0" />
                               <ComboBox fx:id="comboBoxTipoConta" layoutX="30.0" layoutY="281.0" prefHeight="25.0" prefWidth="130.0" />
                               <Label layoutX="30.0" layoutY="156.0" prefHeight="25.0" prefWidth="134.0" text="Afastamento" />
-                              <TextField fx:id="txtAfastamento" layoutX="30.0" layoutY="181.0" prefHeight="25.0" prefWidth="133.0" />
+                              <TextField fx:id="txt_Afastamento" layoutX="30.0" layoutY="181.0" prefHeight="25.0" prefWidth="133.0" />
                               <Label layoutX="172.0" layoutY="156.0" prefHeight="25.0" prefWidth="211.0" text="Motivo do Afastamento" />
-                              <TextField fx:id="txtMotivoAfastamento" layoutX="173.0" layoutY="181.0" prefHeight="25.0" prefWidth="576.0" />
+                              <TextField fx:id="txt_MotivoAfastamento" layoutX="173.0" layoutY="181.0" prefHeight="25.0" prefWidth="576.0" />
                               <Label layoutX="773.0" layoutY="156.0" prefHeight="25.0" prefWidth="134.0" text="Retorno" />
-                              <TextField fx:id="txtRetornoAfastamento" layoutX="773.0" layoutY="181.0" prefHeight="25.0" prefWidth="135.0" />
+                              <TextField fx:id="txt_RetornoAfastamento" layoutX="773.0" layoutY="181.0" prefHeight="25.0" prefWidth="135.0" />
                               <Label layoutX="30.0" layoutY="206.0" prefHeight="25.0" prefWidth="134.0" text="Vencimento do Contrato" />
-                              <TextField fx:id="txtVencimentoContrato" layoutX="30.0" layoutY="231.0" prefHeight="25.0" prefWidth="133.0" />
-                              <Label layoutX="192.0" layoutY="206.0" prefHeight="25.0" prefWidth="134.0" text="Prorrogação do Contrato" />
-                              <TextField fx:id="txtProrrogacaoContrato" layoutX="192.0" layoutY="231.0" prefHeight="25.0" prefWidth="133.0" />
-                              <Label layoutX="334.0" layoutY="206.0" prefHeight="25.0" prefWidth="134.0" text="Forma de Pagamento" />
-                              <TextField fx:id="txtFormaPagamento" layoutX="334.0" layoutY="231.0" prefHeight="25.0" prefWidth="318.0" />
+                              <TextField fx:id="txt_VencimentoContrato" layoutX="30.0" layoutY="231.0" prefHeight="25.0" prefWidth="133.0" />
+                              <Label layoutX="173.0" layoutY="206.0" prefHeight="25.0" prefWidth="134.0" text="Prorrogação do Contrato" />
+                              <TextField fx:id="txt_ProrrogacaoContrato" layoutX="173.0" layoutY="231.0" prefHeight="25.0" prefWidth="133.0" />
+                              <Label layoutX="327.0" layoutY="206.0" prefHeight="25.0" prefWidth="134.0" text="Forma de Pagamento" />
+                              <TextField fx:id="txt_FormaPagamento" layoutX="327.0" layoutY="231.0" prefHeight="25.0" prefWidth="318.0" />
                               <Label layoutX="665.0" layoutY="206.0" prefHeight="25.0" prefWidth="134.0" text="Demissão" />
-                              <TextField fx:id="txtDemissao" layoutX="665.0" layoutY="231.0" prefHeight="25.0" prefWidth="133.0" />
-                              <Label layoutX="180.0" layoutY="256.0" prefHeight="25.0" prefWidth="134.0" text="Banco" />
-                              <TextField fx:id="txtBanco" layoutX="180.0" layoutY="281.0" prefHeight="25.0" prefWidth="133.0" />
+                              <TextField fx:id="txt_Demissao" layoutX="665.0" layoutY="231.0" prefHeight="25.0" prefWidth="133.0" />
+                              <Label layoutX="173.0" layoutY="256.0" prefHeight="25.0" prefWidth="134.0" text="Banco" />
+                              <TextField fx:id="txt_Banco" layoutX="173.0" layoutY="281.0" prefHeight="25.0" prefWidth="133.0" />
                               <Label layoutX="327.0" layoutY="256.0" prefHeight="25.0" prefWidth="134.0" text="Agencia" />
-                              <TextField fx:id="txtAgencia" layoutX="327.0" layoutY="281.0" prefHeight="25.0" prefWidth="133.0" />
+                              <TextField fx:id="txt_Agencia" layoutX="327.0" layoutY="281.0" prefHeight="25.0" prefWidth="133.0" />
                               <Label layoutX="468.0" layoutY="256.0" prefHeight="25.0" prefWidth="134.0" text="Conta" />
-                              <TextField fx:id="txtConta" layoutX="468.0" layoutY="281.0" prefHeight="25.0" prefWidth="133.0" />
+                              <TextField fx:id="txt_Conta" layoutX="468.0" layoutY="281.0" prefHeight="25.0" prefWidth="133.0" />
                               <Label layoutX="612.0" layoutY="256.0" prefHeight="25.0" prefWidth="134.0" text="Digito" />
-                              <TextField fx:id="txtDigito" layoutX="612.0" layoutY="281.0" prefHeight="25.0" prefWidth="46.0" />
+                              <TextField fx:id="txt_Digito" layoutX="612.0" layoutY="281.0" prefHeight="25.0" prefWidth="46.0" />
                               <ComboBox fx:id="comboBoxGrau1" layoutX="33.0" layoutY="131.0" prefHeight="25.0" prefWidth="131.0" />
                               <Label layoutX="33.0" layoutY="106.0" prefHeight="25.0" prefWidth="135.0" text="Grau" />
                            </children>
@@ -142,38 +142,38 @@
                         <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="331.0" prefWidth="973.0">
                            <children>
                               <Label layoutX="14.0" prefHeight="25.0" prefWidth="150.0" text="Telefone" />
-                              <TextField fx:id="txtTelefone" layoutX="14.0" layoutY="25.0" />
+                              <TextField fx:id="txt_Telefone" layoutX="14.0" layoutY="25.0" />
                               <Label layoutX="176.0" prefHeight="25.0" prefWidth="150.0" text="Celular 1" />
-                              <TextField fx:id="txtCelular" layoutX="176.0" layoutY="25.0" />
+                              <TextField fx:id="txt_Celular" layoutX="176.0" layoutY="25.0" />
                               <Label layoutX="351.0" prefHeight="25.0" prefWidth="150.0" text="Celular 2" />
-                              <TextField fx:id="txtCelular1" layoutX="351.0" layoutY="25.0" />
+                              <TextField fx:id="txt_Celular1" layoutX="351.0" layoutY="25.0" />
                               <Label layoutX="14.0" layoutY="65.0" prefHeight="25.0" prefWidth="150.0" text="E-mail" />
-                              <TextField fx:id="txtEmail" layoutX="14.0" layoutY="90.0" prefHeight="25.0" prefWidth="608.0" />
+                              <TextField fx:id="txt_Email" layoutX="14.0" layoutY="90.0" prefHeight="25.0" prefWidth="608.0" />
                               <Label layoutX="14.0" layoutY="115.0" prefHeight="25.0" prefWidth="150.0" text="Logradouro" />
-                              <TextField fx:id="txtLogradouro" layoutX="14.0" layoutY="140.0" prefHeight="25.0" prefWidth="608.0" />
+                              <TextField fx:id="txt_Logradouro" layoutX="14.0" layoutY="140.0" prefHeight="25.0" prefWidth="608.0" />
                               <Label layoutX="630.0" layoutY="115.0" prefHeight="25.0" prefWidth="150.0" text="Numero" />
-                              <TextField fx:id="txtNumero" layoutX="630.0" layoutY="140.0" prefHeight="25.0" prefWidth="83.0" />
+                              <TextField fx:id="txt_Numero" layoutX="630.0" layoutY="140.0" prefHeight="25.0" prefWidth="83.0" />
                               <Label layoutX="14.0" layoutY="165.0" prefHeight="25.0" prefWidth="150.0" text="Complemento" />
-                              <TextField fx:id="txtComplemento" layoutX="14.0" layoutY="190.0" prefHeight="25.0" prefWidth="608.0" />
+                              <TextField fx:id="txt_Complemento" layoutX="14.0" layoutY="190.0" prefHeight="25.0" prefWidth="608.0" />
                               <Label layoutX="630.0" layoutY="165.0" prefHeight="25.0" prefWidth="150.0" text="Bairro" />
-                              <TextField fx:id="txtBairro" layoutX="630.0" layoutY="190.0" prefHeight="25.0" prefWidth="282.0" />
+                              <TextField fx:id="txt_Bairro" layoutX="630.0" layoutY="190.0" prefHeight="25.0" prefWidth="282.0" />
                               <Label layoutX="14.0" layoutY="215.0" prefHeight="25.0" prefWidth="150.0" text="Cidade" />
-                              <TextField fx:id="txtCidade" layoutX="14.0" layoutY="240.0" prefHeight="25.0" prefWidth="608.0" />
+                              <TextField fx:id="txt_Cidade" layoutX="14.0" layoutY="240.0" prefHeight="25.0" prefWidth="608.0" />
                               <Label layoutX="630.0" layoutY="215.0" prefHeight="25.0" prefWidth="79.0" text="UF" />
-                              <TextField fx:id="txtUf" layoutX="630.0" layoutY="240.0" prefHeight="25.0" prefWidth="78.0" />
+                              <TextField fx:id="txt_Uf" layoutX="630.0" layoutY="240.0" prefHeight="25.0" prefWidth="78.0" />
                               <Label layoutX="728.0" layoutY="215.0" prefHeight="25.0" prefWidth="79.0" text="CEP" />
-                              <TextField fx:id="txtCep" layoutX="729.0" layoutY="240.0" prefHeight="25.0" prefWidth="183.0" />
+                              <TextField fx:id="txt_Cep" layoutX="729.0" layoutY="240.0" prefHeight="25.0" prefWidth="183.0" />
                               <Label layoutX="14.0" layoutY="265.0" prefHeight="25.0" prefWidth="150.0" text="País" />
-                              <TextField fx:id="txtPais" layoutX="14.0" layoutY="290.0" prefHeight="25.0" prefWidth="309.0" />
+                              <TextField fx:id="txt_Pais" layoutX="14.0" layoutY="290.0" prefHeight="25.0" prefWidth="309.0" />
                            </children>
                         </AnchorPane>
                      </content>
                   </Tab>
                </tabs>
             </TabPane>
-            <Button fx:id="btnDocumentos" layoutX="14.0" layoutY="667.0" mnemonicParsing="false" text="Documentos" />
-            <Button fx:id="btnSalvar" layoutX="798.0" layoutY="667.0" mnemonicParsing="false" onAction="#onbtnSalvar" text="Salvar" />
-            <Button fx:id="btnSair" layoutX="899.0" layoutY="667.0" mnemonicParsing="false" onAction="#onbtn_sair" text="Sair" AnchorPane.rightAnchor="123.0" />
+            <Button fx:id="btn_Documentos" layoutX="14.0" layoutY="667.0" mnemonicParsing="false" text="Documentos" />
+            <Button fx:id="btn_Salvar" layoutX="798.0" layoutY="667.0" mnemonicParsing="false" onAction="#onbtnSalvar" text="Salvar" />
+            <Button fx:id="btn_Sair" layoutX="899.0" layoutY="667.0" mnemonicParsing="false" onAction="#onbtn_sair" text="Sair" AnchorPane.rightAnchor="123.0" />
             <ImageView fitHeight="150.0" fitWidth="200.0" layoutX="-14.0" layoutY="4.0" pickOnBounds="true" preserveRatio="true">
                <image>
                   <Image url="@image/btz%20reduzida.png" />
@@ -182,8 +182,8 @@
             <ImageView fitHeight="183.0" fitWidth="141.0" layoutX="9.0" layoutY="80.0" pickOnBounds="true" preserveRatio="true" />
             <Label layoutX="1000.0" layoutY="18.0" prefHeight="17.0" prefWidth="35.0" AnchorPane.rightAnchor="2.0" />
             <Label layoutX="1013.0" layoutY="43.0" />
-            <RadioButton fx:id="rdAtivo" layoutX="166.0" layoutY="184.0" mnemonicParsing="false" onAction="#onradioAtivo" onKeyPressed="#onradioAtivo" text="Ativo" />
-            <RadioButton fx:id="rdUsuarioDoSistema" layoutX="305.0" layoutY="184.0" mnemonicParsing="false" onAction="#onradioUsuarioDoSistema" onMouseClicked="#onradioUsuarioDoSistema" text="Usuário do Sistema" />
+            <RadioButton fx:id="rd_Ativo" layoutX="166.0" layoutY="184.0" mnemonicParsing="false" onAction="#onradioAtivo" onKeyPressed="#onradioAtivo" text="Ativo" />
+            <RadioButton fx:id="rd_UsuarioDoSistema" layoutX="305.0" layoutY="184.0" mnemonicParsing="false" onAction="#onradioUsuarioDoSistema" onMouseClicked="#onradioUsuarioDoSistema" text="Usuário do Sistema" />
             <Pane layoutX="474.0" layoutY="180.0" prefHeight="104.0" prefWidth="189.0" />
          </children>
       </AnchorPane>

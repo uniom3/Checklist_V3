@@ -159,7 +159,7 @@ public void conexaoScrollPane(String caminho) {
 		} catch (IOException e) {
 			e.printStackTrace();
 		}
-		Scene scene = new Scene(root, 400, 240);
+		Scene scene = new Scene(root, 1064, 775);
 		Stage stage1 = new Stage();	
 		stage1.setTitle("Checklist");
 		stage1.setScene(scene);
