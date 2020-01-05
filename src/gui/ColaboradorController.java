@@ -1,25 +1,22 @@
 package gui;
 
 import java.net.URL;
-import java.time.Instant;
-import java.time.ZoneId;
 import java.util.ArrayList;
-import java.util.Date;
 import java.util.List;
-import java.util.Map;
 import java.util.ResourceBundle;
-import java.util.Set;
-
 import db.DbException;
 import gui.listener.DataChangeListener;
 import gui.util.Alerts;
+import gui.util.Conexoes;
 import gui.util.LblUsuario;
+import gui.util.MaskFieldUtil;
 import gui.util.Utils;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.Alert.AlertType;
 import javafx.scene.control.Button;
+import javafx.scene.control.ComboBox;
 import javafx.scene.control.Label;
 import javafx.scene.control.RadioButton;
 import javafx.scene.control.TextField;
@@ -31,6 +28,12 @@ import model.services.ColaboradorService;
 
 public class ColaboradorController implements Initializable {
 
+	private String string_sexo;
+	
+	private String string_estadoCivil;
+	private String string_grau;
+	private String string_grau1;	
+	private String string_conta;
 	private static Stage stage;
 	private Colaborador entity;
 	private ColaboradorService service;
@@ -70,7 +73,6 @@ public class ColaboradorController implements Initializable {
 	private RadioButton rd_UsuarioDoSistema;
 	@FXML
 	private TextField txt_DataNascimento;
-
 	@FXML
 	private TextField txt_OrgaoEmissor;
 	@FXML
@@ -111,12 +113,10 @@ public class ColaboradorController implements Initializable {
 	private TextField txt_Setor;
 	@FXML
 	private TextField txt_Admissao;
-
 	@FXML
 	private TextField txt_Curso;
 	@FXML
 	private TextField txt_Conclusao;
-
 	@FXML
 	private TextField txt_Curso1;
 	@FXML
@@ -174,7 +174,27 @@ public class ColaboradorController implements Initializable {
 	@FXML
 	private Button btn_Sair;
 	@FXML
+	private ComboBox<String> cbb_sexo;
+	@FXML
+	private ComboBox<String> cbb_estadoCivil;
+	@FXML
+	private ComboBox<String> cbb_grau;
+	@FXML
+	private ComboBox<String> cbb_grau1;
+	@FXML
+	private ComboBox<String> cbb_conta;
+	@FXML
 	private AnchorPane conteudoColaborador;
+
+
+
+	public void setColaboradorService(ColaboradorService service) {
+		this.service = service;
+	}
+
+	public void setColaborador(Colaborador entity) {
+		this.entity = entity;
+	}
 
 	public static Stage getStage() {
 		return stage;
@@ -189,36 +209,9 @@ public class ColaboradorController implements Initializable {
 		utils.fechar();
 	}
 
-	@FXML
-	public void onbtn_sair() {
-		fecharColaborador();
-	}
-
-	@FXML
-	public void onradioAtivo() {
-		if (rd_Ativo.isSelected() == true) {
-			rd_Ativo.setSelected(true);
-		} else {
-			rd_Ativo.setSelected(false);
-		}
-	}
-
-	@FXML
-	public void onradioUsuarioDoSistema() {
-		if (rd_UsuarioDoSistema.isSelected() == true) {
-			rd_UsuarioDoSistema.setSelected(true);
-		} else {
-			rd_UsuarioDoSistema.setSelected(false);
-		}
-	}
-
 	private void tela() {
 		PrincipalController principal = new PrincipalController();
 
-	}
-
-	public void setColaborador(Colaborador entity) {
-		this.entity = entity;
 	}
 
 	private void camposInativos() {
@@ -354,18 +347,109 @@ public class ColaboradorController implements Initializable {
 	}
 
 	@FXML
-	public void onbtnSalvar(ActionEvent event) {	
-		try {
-				System.out.println("01");
+	public void onbtn_sair() {
+		fecharColaborador();
+	}
+
+	
+	public void comboBoxSexo() {
+		cbb_sexo.getItems();
+	}
+	@FXML
+	public void onradioAtivo() {
+		if (rd_Ativo.isSelected() == true) {
+			rd_Ativo.setSelected(true);
+			entity.setAtivo(true);
+		} else {
+			rd_Ativo.setSelected(false);
+			entity.setAtivo(false);
+		}
+	}
+
+	@FXML
+	public void onradioUsuarioDoSistema() {
+		if (rd_UsuarioDoSistema.isSelected() == true) {
+			rd_UsuarioDoSistema.setSelected(true);
+			entity.setUsuarioSistema(true);
+		} else {
+			rd_UsuarioDoSistema.setSelected(false);
+			entity.setUsuarioSistema(false);
+		}
+	}
+
+	@FXML
+	public void onbtnSalvar(ActionEvent event) {
+		entity = getFormData();
+		service.saveOrUpdate(entity);
+		
+		/*try {
+
 			service.saveOrUpdate(entity);
-			System.out.println("01");
 			Utils.currentStage(event).close();
-			System.out.println("01");
 		} catch (ValidationException e) {
 
 		} catch (DbException e) {
 			Alerts.showAlert("Error saving object", null, e.getMessage(), AlertType.ERROR);
-		}
+		}*/
+	}
+
+	private Colaborador getFormData() {
+		Colaborador obj = new Colaborador();
+		obj.setId(Utils.tryParseToInt(txt_Id.getText()));
+		obj.setNome   (txt_Nome.getText());
+		obj.setCpf (txt_Cpf.getText());
+		obj.setRg(txt_Rg.getText());
+		obj.setNacionalidade(txt_Nacionalidade.getText());
+		obj.setNaturalidade(txt_Naturalidade.getText());
+		//obj.setDataNascimento(txt_DataNascimento.getText());
+		obj.setOrgaoemissor(txt_OrgaoEmissor.getText());
+		//obj.setDataemissao(txt_DtaEmissao.getText());
+		obj.setTituloeleitor(txt_TituloEleitor.getText());
+		obj.setCid(txt_Cdi.getText());
+		obj.setCnh(txt_Cnh.getText());
+		obj.setCnpj(txt_Cnpj.getText());
+		obj.setRazaosocial(txt_RazaoSocial.getText());
+		obj.setCts(txt_Cts.getText());
+		obj.setSeriects(txt_SerieCts.getText());
+		//obj.setEmissaocts(txt_EmissaCts.getText());
+		obj.setNis(txt_Nis.getText());
+		obj.setReservista(txt_Reservista.getText());
+		obj.setCartasus(txt_Sus.getText());
+		obj.setEsposa(txt_Conjuge.getText());
+		obj.setDependente(txt_Dependente.getText());
+		obj.setDependente2(txt_Dependente1.getText());
+		obj.setDependente3(txt_Dependente2.getText());
+		obj.setCargo(txt_Cargo.getText());
+		obj.setSetor(txt_Setor.getText());
+		//obj.setDemissao(txt_Admissao.getText());
+		obj.setCurso(txt_Curso.getText());
+		obj.setConclusao(txt_Conclusao.getText());
+		obj.setCurso(txt_Curso1.getText());
+		obj.setConclusao1(txt_Conclusao1.getText());
+		//obj.setAfastamento (txt_Afastamento.getText());
+		obj.setMotivoafastamento(txt_MotivoAfastamento.getText());
+		//obj.setRetorno(txt_RetornoAfastamento.getText());
+		//obj.setVencimentocontrato(txt_VencimentoContrato.getText());
+		//obj.setProrrogacaocontrato (txt_ProrrogacaoContrato.getText());
+		obj.setFormapagamento(txt_FormaPagamento.getText());
+		//obj.setDemissao (txt_Demissao.getText());
+		obj.setBanco(txt_Banco.getText());
+		obj.setAgencia(txt_Agencia.getText());
+		obj.setConta(txt_Conta.getText());
+		obj.setDigito(txt_Digito.getText());
+		obj.setEmail(txt_Email.getText());
+		obj.setTelefone(txt_Telefone.getText());
+		obj.setCelular1(txt_Celular.getText());
+		obj.setCelular2(txt_Celular1.getText());
+		obj.setLogradouro(txt_Logradouro.getText());
+		obj.setNumero(txt_Numero.getText());
+		obj.setComplemento(txt_Complemento.getText());
+		obj.setBairro(txt_Bairro.getText());
+		obj.setCidade(txt_Cidade.getText());
+		obj.setUf(txt_Uf.getText());
+		obj.setCEP(txt_Cep.getText());
+		obj.setPais(txt_Pais.getText());
+		return obj;	
 	}
 
 	public void onBtnNovo(ActionEvent e) {
@@ -379,10 +463,112 @@ public class ColaboradorController implements Initializable {
 
 	}
 
+	public void inicializeComboBox() {
+		gui.util.ComboBox.sexo(cbb_sexo);
+		gui.util.ComboBox.estadoCivil(cbb_estadoCivil);
+		gui.util.ComboBox.grau(cbb_grau);
+		gui.util.ComboBox.grau(cbb_grau1);
+		gui.util.ComboBox.conta(cbb_conta);
+	}
+
+	public void inicializeMascara() {
+		MaskFieldUtil.foneField(this.txt_Telefone);
+		MaskFieldUtil.cepField(this.txt_Cep);
+		MaskFieldUtil.cpfField(this.txt_Cpf);
+		MaskFieldUtil.dateField(this.txt_DataNascimento);
+		MaskFieldUtil.dateField(this.txt_Demissao);
+		MaskFieldUtil.dateField(this.txt_Admissao);
+		MaskFieldUtil.dateField(this.txt_Afastamento);
+		MaskFieldUtil.dateField(this.txt_RetornoAfastamento);
+		MaskFieldUtil.dateField(this.txt_EmissaCts);
+		MaskFieldUtil.dateField(this.txt_DtaEmissao);
+		MaskFieldUtil.cepField(this.txt_Cep);
+		MaskFieldUtil.cnpjField(this.txt_Cnpj);
+		MaskFieldUtil.foneField(this.txt_Telefone);
+		MaskFieldUtil.foneField(this.txt_Celular);
+		MaskFieldUtil.foneField(this.txt_Celular1);
+		MaskFieldUtil.rgField(this.txt_Rg);
+	}
+
+	public void updateFormData() {
+		if(entity == null) {
+			throw new IllegalStateException("Entidade nula");
+		}
+
+		txt_Id.setText(String.valueOf(entity.getId()));
+		txt_Nome.setText(entity.getNome());
+		txt_Cpf.setText(entity.getCpf());
+		txt_Rg.setText(entity.getRg());
+		txt_Nacionalidade.setText(entity.getNacionalidade());
+		txt_Naturalidade.setText(entity.getNaturalidade());
+	  //  rd_Ativo.setSelected(entity.getAtivo());
+	//	rd_UsuarioDoSistema.setSelected(entity.getUsuarioSistema());
+		// txt_DataNascimento .setText(entity.getDataNascimento());
+		txt_OrgaoEmissor.setText(entity.getOrgaoemissor());
+		// txt_DtaEmissao .setText( entity.getDataemissao());
+		txt_TituloEleitor.setText(entity.getTituloeleitor());
+		txt_Cdi.setText(entity.getCid());
+		txt_Cnh.setText(entity.getCnh());
+		txt_Cnpj.setText(entity.getCnpj());
+		txt_RazaoSocial.setText(entity.getRazaosocial());
+		txt_Cts.setText(entity.getCts());
+		txt_SerieCts.setText(entity.getSeriects());
+		// txt_EmissaCts .setText(entity.getEmissaocts() );
+		txt_Nis.setText(entity.getNis());
+		txt_Reservista.setText(entity.getReservista());
+		txt_Sus.setText(entity.getCartasus());
+		txt_Conjuge.setText(entity.getEsposa());
+		txt_Dependente.setText(entity.getDependente());
+		txt_Dependente1.setText(entity.getDependente2());
+		txt_Dependente2.setText(entity.getDependente3());
+		txt_Cargo.setText(entity.getCargo());
+		txt_Setor.setText(entity.getSetor());
+		// txt_Admissao .setText( entity.getAdmissao());
+		txt_Curso.setText(entity.getCurso());
+		txt_Conclusao.setText(entity.getConclusao());
+		txt_Curso1.setText(entity.getCurso1());
+		txt_Conclusao1.setText(entity.getConclusao1());
+		// txt_Afastamento .setText(entity.getAfastamento());
+		txt_MotivoAfastamento.setText(entity.getMotivoafastamento());
+		// txt_RetornoAfastamento .setText(entity.getRetorno() );
+		// txt_VencimentoContrato .setText(entity.getVencimentocontrato() );
+		// txt_ProrrogacaoContrato .setText(entity.getProrrogacaocontrato() );
+		txt_FormaPagamento.setText(entity.getFormapagamento());
+		// txt_Demissao .setText(entity.getDemissao() );
+		txt_Banco.setText(entity.getBanco());
+		txt_Agencia.setText(entity.getAgencia());
+		txt_Conta.setText(entity.getConta());
+		txt_Digito.setText(entity.getDigito());
+		txt_Telefone.setText(entity.getTelefone());
+		txt_Celular.setText(entity.getCelular1());
+		txt_Celular1.setText(entity.getCelular2());
+		txt_Email.setText(entity.getEmail());
+		txt_Logradouro.setText(entity.getLogradouro());
+		txt_Numero.setText(entity.getNumero());
+		txt_Complemento.setText(entity.getComplemento());
+		txt_Bairro.setText(entity.getBairro());
+		txt_Cidade.setText(entity.getCidade());
+		txt_Uf.setText(entity.getUf());
+		txt_Cep.setText(entity.getCEP());
+		txt_Pais.setText(entity.getPais());
+		 cbb_sexo .setPromptText(entity.getSexo());
+		 cbb_estadoCivil .setPromptText(entity.getEstadocivil() );
+		// cbb_grau .setText(entity.get );
+		// cbb_grau1 .setText(entity.get );
+		// cbb_conta.setText( entity.get);
+	}
+
 	@Override
 	public void initialize(URL url, ResourceBundle rb) {
 		camposInativos();
 		onLabelUsuario();
+		inicializeComboBox();
+		inicializeMascara();
+	}
+
+	public void subscribeDataChangeListener(Conexoes conexoes) {
+		
+		
 	}
 
 }

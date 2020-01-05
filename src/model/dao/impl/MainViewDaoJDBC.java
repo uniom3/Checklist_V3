@@ -13,7 +13,7 @@ import model.entities.MainView;
 
 public class MainViewDaoJDBC implements MainViewDao {
 
-	private Connection conn;
+	 Connection conn;
 
 	private String usuario1;
 	private String senha1;
@@ -118,7 +118,7 @@ public class MainViewDaoJDBC implements MainViewDao {
 	public MainView findByUser(String usuario, String senha) {
 		PreparedStatement st = null;
 		ResultSet rs = null;
-		conn = DB.getConnection();
+	conn = DB.getConnection();
 		
 		try {
 			st = conn.prepareStatement(
@@ -133,7 +133,6 @@ public class MainViewDaoJDBC implements MainViewDao {
 				System.out.println(usu.getUsuario());				
 			}
 		} catch (SQLException e) {
-			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
 		

@@ -3,6 +3,8 @@ package gui;
 import java.io.IOException;
 import java.net.URL;
 import java.util.ResourceBundle;
+
+import gui.util.Conexoes;
 import gui.util.LblUsuario;
 import gui.util.Utils;
 import javafx.application.Platform;
@@ -17,6 +19,8 @@ import javafx.scene.control.ScrollPane;
 import javafx.scene.layout.AnchorPane;
 import javafx.stage.Stage;
 import javafx.stage.WindowEvent;
+import model.entities.Colaborador;
+import model.entities.Desenhos;
 import model.services.PrincipalService;
 
 public class PrincipalController implements Initializable {
@@ -73,8 +77,9 @@ public class PrincipalController implements Initializable {
 
 	@FXML
 	public void onmenuItemdesenhoEquipamento() {
+		Desenhos obj = new Desenhos();
 		Utils utils = new Utils();
-		utils.conexaoScrollPane("gui/Desenho.fxml");
+		utils.conexaoScrollPane(obj,"gui/Desenho.fxml");
 	}
 
 	@FXML
@@ -129,8 +134,11 @@ public class PrincipalController implements Initializable {
 
 	@FXML
 	public void onmenuItemCadastroColaborador() {
-		Utils utils = new Utils();
-		utils.conexaoScrollPane("gui/Colaborador.fxml");
+		Colaborador obj = new Colaborador();
+		/*Utils utils = new Utils();
+		utils.conexaoScrollPane(obj,"gui/Colaborador.fxml");*/
+		Conexoes conexao = new Conexoes();
+		conexao.createDialogForm(obj, "/gui/Colaborador.fxml");
 	}
 
 	@FXML

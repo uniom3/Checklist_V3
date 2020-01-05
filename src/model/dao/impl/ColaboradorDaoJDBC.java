@@ -88,7 +88,7 @@ public class ColaboradorDaoJDBC implements ColaboradorDao {
 				obj.setEmail(rs.getString("naturalidade"));
 				obj.setCelular1(rs.getString("naturalidade"));
 				obj.setCelular2(rs.getString("naturalidade"));
-				obj.setEndereco(rs.getString("naturalidade"));
+				obj.setLogradouro(rs.getString("naturalidade"));
 				obj.setNumero(rs.getString("naturalidade"));
 				obj.setComplemento(rs.getString("naturalidade"));
 				obj.setBairro(rs.getString("naturalidade"));
@@ -177,7 +177,7 @@ public class ColaboradorDaoJDBC implements ColaboradorDao {
 				obj.setEmail(rs.getString("email"));
 				obj.setCelular1(rs.getString("celular1"));
 				obj.setCelular2(rs.getString("celular2"));
-				obj.setEndereco(rs.getString("endereco"));
+				obj.setLogradouro(rs.getString("endereco"));
 				obj.setNumero(rs.getString("numero"));
 				obj.setComplemento(rs.getString("complemento"));
 				obj.setBairro(rs.getString("bairro"));
@@ -202,7 +202,7 @@ public class ColaboradorDaoJDBC implements ColaboradorDao {
 		PreparedStatement st = null;
 		try {
 			st = conn.prepareStatement("INSERT INTO tb_colaborador " + "(nome)" + "(ativo)" + "(usuarioSistema)"
-					+ "(cpf)" + "(nacionalidade)" + "(naturalidade)" + "(sexo)" + "(dataNascimento)" + "(estadocivil)"
+					+ "(cpf)" + "(nacionalidade)" + "(naturalidade)" + "(sexo)"/* + "(dataNascimento)" + "(estadocivil)"
 					+ "(rg)" + "(orgaoemissor)" + "(dataemissao)" + "(tituloeleitor)" + "(cid)" + "(cnh)" + "(cnpj)"
 					+ "(razaosocial)" + "(cts)" + "(seriects)" + "(emissaocts)" + "(nis)" + "(reservista)"
 					+ "(cartasus)" + "(esposa)" + "(dependente)" + "(dependente2)" + "(dependente3)" + "(cargo)"
@@ -212,18 +212,27 @@ public class ColaboradorDaoJDBC implements ColaboradorDao {
 					+ "(agencia)" + "(conta)" + "(digito)" + "(tipoPessoa)" + "(incricaoEstadual)"
 					+ "(inscricaoMunicipal)" + "(orgaoExpedidor  )" + "(email)" + "(celular1)" + "(celular2)"
 					+ "(endereco)" + "(numero)" + "(complemento)" + "(bairro)" + "(uf)" + "(cidade)" + "(CEP)"
-					+ "(pais)" +
+					+ "(pais)" */+
 
-					"VALUES " + "(?)" + "(?)" + "(?)" + "(?)" + "(?)" + "(?)" + "(?)" + "(?)" + "(?)" + "(?)" + "(?)"
+					"VALUES " + "(?)" + "(?)" + "(?)" + "(?)" + "(?)" + "(?)" /*+ "(?)" + "(?)" + "(?)" + "(?)" + "(?)"
 					+ "(?)" + "(?)" + "(?)" + "(?)" + "(?)" + "(?)" + "(?)" + "(?)" + "(?)" + "(?)" + "(?)" + "(?)"
 					+ "(?)" + "(?)" + "(?)" + "(?)" + "(?)" + "(?)" + "(?)" + "(?)" + "(?)" + "(?)" + "(?)" + "(?)"
 					+ "(?)" + "(?)" + "(?)" + "(?)" + "(?)" + "(?)" + "(?)" + "(?)" + "(?)" + "(?)" + "(?)" + "(?)"
 					+ "(?)" + "(?)" + "(?)" + "(?)" + "(?)" + "(?)" + "(?)" + "(?)" + "(?)" + "(?)" + "(?)" + "(?)"
-					+ "(?)" + "(?)" + "(?)" + "(?)",
+					+ "(?)" + "(?)" + "(?)" + "(?)"*/,
 
 					Statement.RETURN_GENERATED_KEYS);
+			System.out.println(st);
 
 			st.setString(1, obj.getNome());
+			st.setBoolean(2,obj.getAtivo());
+			st.setBoolean(3, obj.getUsuarioSistema());
+			st.setString(4, obj.getCpf());
+			st.setString(5, obj.getNacionalidade());
+			st.setString(6, obj.getNaturalidade());
+			st.setString(7, obj.getSexo());
+			
+			
 
 			int rowsAffected = st.executeUpdate();
 
@@ -318,7 +327,7 @@ public class ColaboradorDaoJDBC implements ColaboradorDao {
 			st.setString(52, obj.getEmail());
 			st.setString(53, obj.getCelular1());
 			st.setString(54, obj.getCelular2());
-			st.setString(55, obj.getEndereco());
+			st.setString(55, obj.getLogradouro());
 			st.setString(56, obj.getNumero());
 			st.setString(57, obj.getComplemento());
 			st.setString(58, obj.getBairro());

@@ -152,13 +152,13 @@ public class Utils {
 		
 	}
 	
-public void conexaoScrollPane(String caminho) {
+public void conexaoScrollPane(Object obj,String caminho ) {
 		ScrollPane root = null;
 		try {
 			root = FXMLLoader.load(getClass().getClassLoader().getResource(caminho));
 		} catch (IOException e) {
 			e.printStackTrace();
-		}
+		} 
 		Scene scene = new Scene(root, 1064, 775);
 		Stage stage1 = new Stage();	
 		stage1.setTitle("Checklist");

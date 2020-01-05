@@ -62,8 +62,9 @@ public class Colaborador implements Serializable{
 	private	String orgaoExpedidor   	;
 	private	String email 	;
 	private	String celular1 	;
+	private String telefone;
 	private	String celular2 	;
-	private	 String endereco 	;
+	private	 String logradouro 	;
 	private	String numero 	;
 	private	 String complemento 	;
 	private	 String bairro 	;
@@ -85,8 +86,8 @@ public class Colaborador implements Serializable{
 			Date afastamento, String motivoafastamento, Date retorno, Date vencimentocontrato, Date prorrogacaocontrato,
 			String formapagamento, Date demissao, String tipoconta, String banco, String agencia, String conta,
 			String digito, String tipoPessoa, String incricaoEstadual, String inscricaoMunicipal, String orgaoExpedidor,
-			String email, String celular1, String celular2, String endereco, String numero, String complemento,
-			String bairro, String uf, String cidade, String cEP, String pais) {
+			String email, String celular1, String celular2, String logradouro, String numero, String complemento,
+			String bairro, String uf, String cidade, String cEP, String telefone, String pais) {
 		super();
 		this.id = id;
 		this.nome = nome;
@@ -144,14 +145,25 @@ public class Colaborador implements Serializable{
 		this.email = email;
 		this.celular1 = celular1;
 		this.celular2 = celular2;
-		this.endereco = endereco;
+		this.logradouro = logradouro;
 		this.numero = numero;
 		this.complemento = complemento;
 		this.bairro = bairro;
 		this.uf = uf;
 		this.cidade = cidade;
 		CEP = cEP;
+		this.telefone = telefone;
 		this.pais = pais;
+	}
+
+	
+	
+	public String getTelefone() {
+		return telefone;
+	}
+
+	public void setTelefone(String telefone) {
+		this.telefone = telefone;
 	}
 
 	public Integer getId() {
@@ -602,12 +614,12 @@ public class Colaborador implements Serializable{
 		this.celular2 = celular2;
 	}
 
-	public String getEndereco() {
-		return endereco;
+	public String getLogradouro() {
+		return logradouro;
 	}
 
-	public void setEndereco(String endereco) {
-		this.endereco = endereco;
+	public void setLogradouro(String logradouro) {
+		this.logradouro = logradouro;
 	}
 
 	public String getNumero() {

@@ -2,11 +2,14 @@ package model.services;
 
 import java.util.List;
 
+import gui.ColaboradorController;
 import model.dao.DaoFactory;
 import model.dao.ColaboradorDao;
 import model.entities.Colaborador;
 
 public class ColaboradorService {
+	
+	ColaboradorController controller = new ColaboradorController();
 	
 	private ColaboradorDao dao = DaoFactory.createColaboradorDao();
 

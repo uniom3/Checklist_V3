@@ -1,7 +1,7 @@
 CREATE DATABASE CHECKLIST_v1;
 
 CREATE TABLE tb_pessoa(
-codigo int(11) 	NOT NULL AUTO_INCREMENT,
+id int(11) 	NOT NULL AUTO_INCREMENT,
 nome nvarchar(70) DEFAULT NULL,
 razaoSocial  nvarchar(150),
 cpf int(15),
@@ -19,11 +19,11 @@ cidade  nvarchar(70),
 uf  nvarchar(2),
 CEP int(10),
 pais nvarchar(70),
-PRIMARY KEY(codigo)
+PRIMARY KEY(id)
 ); 
 
 CREATE TABLE tb_arquivo(
-	  codigo int(11) 	NOT NULL AUTO_INCREMENT,
+	  id int(11) 	NOT NULL AUTO_INCREMENT,
 	  arquivo1 nvarchar(350),
 	  arquivo2 nvarchar(350),
 	  arquivo3 nvarchar(350),
@@ -36,23 +36,23 @@ CREATE TABLE tb_arquivo(
 	  arquivo10 nvarchar(350),
 	  arquivo11 nvarchar(350),
 	  arquivo12 nvarchar(350),
-	  PRIMARY KEY(codigo)
+	  PRIMARY KEY(id)
 ); 
 
 CREATE TABLE tb_classe(
-codigo int(11) 	NOT NULL AUTO_INCREMENT,
+id int(11) 	NOT NULL AUTO_INCREMENT,
 nome nvarchar(350),
-PRIMARY KEY(codigo)
+PRIMARY KEY(id)
 ); 
 
 CREATE TABLE tb_classificacao(
-codigo int(11) 	NOT NULL AUTO_INCREMENT,
+id int(11) 	NOT NULL AUTO_INCREMENT,
 nome nvarchar(350),
-PRIMARY KEY(codigo)
+PRIMARY KEY(id)
 ); 
 
 CREATE TABLE tb_cliente(
-     codigo int(11) NOT NULL AUTO_INCREMENT,
+     id int(11) NOT NULL AUTO_INCREMENT,
 	 ativo nvarchar(3), 
 	 tipoPessoa nvarchar(20),
 	 incricaoEstadual int(20),
@@ -76,11 +76,11 @@ CREATE TABLE tb_cliente(
 	 fone2Contato2 int(15),
 	 emailContato2 nvarchar(150),
 	 faxContato2  int(15),
-	 PRIMARY KEY(codigo)
+	 PRIMARY KEY(id)
 ); 
 
 CREATE TABLE tb_colaborador(
-      codigo int(11) NOT NULL AUTO_INCREMENT,     
+      id int(11) NOT NULL AUTO_INCREMENT,     
 	  ativo boolean ,
 	  tipoPessoa nvarchar(20),
 	  incricaoEstadual int(20),
@@ -104,11 +104,11 @@ CREATE TABLE tb_colaborador(
 	 fone2Contato2 int(15),
 	 emailContato2 nvarchar(150),
 	 faxContato2  int(15),
-	  PRIMARY KEY(codigo)
+	  PRIMARY KEY(id)
 ); 
 
 CREATE TABLE tb_desenho(
-     codigo int(11) NOT NULL AUTO_INCREMENT,  
+     id int(11) NOT NULL AUTO_INCREMENT,  
 	  desenhoSetor nvarchar(150),
 	  desenhoClasse nvarchar(150),
 	  datafixa date,
@@ -121,10 +121,10 @@ CREATE TABLE tb_desenho(
 	  aprovado  nvarchar(150),
 	  desenhoCliente  nvarchar(150),
 	 desenhoCodCliente int(11),
-	 PRIMARY KEY(codigo));
+	 PRIMARY KEY(id));
 	 
 CREATE TABLE tb_documento(
-      codigo int(11) NOT NULL AUTO_INCREMENT, 
+      id int(11) NOT NULL AUTO_INCREMENT, 
 	  or1 boolean,
 	  os boolean,
 	  documentoCodCliente int(11),
@@ -142,16 +142,16 @@ CREATE TABLE tb_documento(
 	  bParcConcluido boolean,
 	  bConcluido boolean,
 	 datafixa date
-	  PRIMARY KEY(codigo));
+	  PRIMARY KEY(id));
 	  
 CREATE TABLE tb_equipamento(
-codigo int(11) 	NOT NULL AUTO_INCREMENT,
+id int(11) 	NOT NULL AUTO_INCREMENT,
 nome nvarchar(350),
-PRIMARY KEY(codigo)
+PRIMARY KEY(id)
 ); 
 	  
  CREATE TABLE tb_grupo(
-      codigo int(11) NOT NULL AUTO_INCREMENT,
+      id int(11) NOT NULL AUTO_INCREMENT,
 	  grupo nvarchar(100),
 	  ativo boolean,
 	  alterarSenhaColaborador boolean,
@@ -174,19 +174,19 @@ PRIMARY KEY(codigo)
 	  visualizarAdministrador boolean,
 	  visualizarDocumento boolean,
 	  visualizarRemessa boolean,
-	  PRIMARY KEY(codigo)
+	  PRIMARY KEY(id)
 ); 
 
  CREATE TABLE tb_grupo(
-codigo int(11) NOT NULL AUTO_INCREMENT,
+id int(11) NOT NULL AUTO_INCREMENT,
 usuario nvarchar(100),
 senha nvarchar(100),
-PRIMARY KEY(codigo)
+PRIMARY KEY(id)
 ); 
 
 	 
 CREATE TABLE tb_remessa(
-     codigo int(11) NOT NULL AUTO_INCREMENT,
+     id int(11) NOT NULL AUTO_INCREMENT,
 	 assunto nvarchar(200),
 	 os int(11),
 	 datafixa Date ,
@@ -205,17 +205,30 @@ CREATE TABLE tb_remessa(
 	  l boolean,
 	  m boolean,
 	  remessaDesenho int;
-	  PRIMARY KEY(codigo)
+	  PRIMARY KEY(id)
 ); 
-	
+	CREATE TABLE tb_usuario(
+	id int(11) NOT NULL AUTO_INCREMENT,
+	login nvarchar(50) NOT NULL,
+	senha nvarchar(50) NOT NULL,
+	fk_colaborador_id int 
+	PRIMARY KEY(id)
+	);
+	 
+	 insert into tb_usuario (
+	 login, senha, fk_colaborador_id)
+	 value
+	 ('root','1234', 300);
 	 
 	 
-	 ALTER TABLE tb_documento ADD CONSTRAINT fk_documentoCodCliente FOREIGN KEY ( documentoCodCliente ) REFERENCES tb_cliente ( codigo ) ;
-     ALTER TABLE tb_documento ADD CONSTRAINT fk_classeCodDocumento FOREIGN KEY ( classeCodDocumento ) REFERENCES tb_classe ( codigo ) ;	 
-	 ALTER TABLE tb_desenho ADD CONSTRAINT fk_desenhoCodCliente FOREIGN KEY ( desenhoCodCliente ) REFERENCES tb_cliente ( codigo ) ;
-	 ALTER TABLE tb_desenho ADD CONSTRAINT fk_desenhoSetor FOREIGN KEY ( desenhoSetor ) REFERENCES tb_setor ( codigo ) ;
-	 ALTER TABLE tb_remessa ADD CONSTRAINT fk_remessaCliente FOREIGN KEY ( remessaCliente ) REFERENCES tb_cliente ( codigo ) ;	
-	 ALTER TABLE tb_remessa ADD CONSTRAINT fk_remessaDesenho FOREIGN KEY ( remessaDesenho ) REFERENCES tb_desenho ( codigo ) ;	 	 
+	 ALTER TABLE tb_documento ADD CONSTRAINT fk_documentoCodCliente FOREIGN KEY ( documentoCodCliente ) REFERENCES tb_cliente ( id ) ;
+     ALTER TABLE tb_documento ADD CONSTRAINT fk_classeCodDocumento FOREIGN KEY ( classeCodDocumento ) REFERENCES tb_classe ( id ) ;	 
+	 ALTER TABLE tb_desenho ADD CONSTRAINT fk_desenhoCodCliente FOREIGN KEY ( desenhoCodCliente ) REFERENCES tb_cliente ( id ) ;
+	 ALTER TABLE tb_desenho ADD CONSTRAINT fk_desenhoSetor FOREIGN KEY ( desenhoSetor ) REFERENCES tb_setor ( id ) ;
+	 ALTER TABLE tb_remessa ADD CONSTRAINT fk_remessaCliente FOREIGN KEY ( remessaCliente ) REFERENCES tb_cliente ( id ) ;	
+	 ALTER TABLE tb_remessa ADD CONSTRAINT fk_remessaDesenho FOREIGN KEY ( remessaDesenho ) REFERENCES tb_desenho ( id ) ;	 	 
+	 ALTER TABLE `tb_usuario` ADD CONSTRAINT `fk_colaborador_id` FOREIGN KEY ( `id` ) REFERENCES `tb_colaborador` ( ` id ` ) ;
+
 	  
 	 
 	 
